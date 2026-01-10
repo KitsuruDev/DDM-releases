@@ -1,0 +1,4 @@
+*.txt text eol=lf
+*.py  text eol=lf
+*.rpy text eol=lf
+*     binary

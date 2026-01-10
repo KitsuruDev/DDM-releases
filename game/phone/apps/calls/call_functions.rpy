@@ -1,0 +1,90 @@
+init -100 python in phone.calls:
+    from renpy import store
+    from store import Transform, BrightnessMatrix, phone
+    from store.phone import character, config, show_layer_at, set_current_screen, system
+    import time
+
+    config.layer_at_transforms["phone_call"] = Transform(matrixcolor=BrightnessMatrix(-0.21), blur=20)
+
+    def call(caller, transition = False, video = False):
+        global _current_caller
+        if _current_caller is not None:
+            raise Exception("can't have 2 phone calls at the same time")
+        _current_caller = character.character(caller)
+        store.narrator = store._phone_narrator
+
+        set_current_screen("phone_call")
+        show_layer_at("phone_call")
+
+        renpy.show_screen("phone_call_bg")
+        renpy.show_screen("phone_call", video = video, _layer = "call_layer_gui")
+
+        if transition:
+            renpy.with_statement(config.enter_transition)
+
+    def end_call(date, transition = False):
+        global _current_caller
+        if _current_caller is None:
+            raise Exception("ending phone call, but no call was ever made")
+
+        global _call_time_st
+        register_call(character.character(store.pov_key_mobile), _current_caller, _call_time_st, date)
+        _current_caller = None
+        store.narrator = store._backup_narrator
+        _call_time_st = 0.0
+
+        set_current_screen(None)
+
+        show_layer_at([], reset=True)
+        renpy.hide_screen("phone_call_bg")
+        renpy.hide_screen("phone_call", layer = "call_layer_gui")
+
+        if transition:
+            renpy.with_statement(config.exit_transition)
+
+        set_current_screen(None)
+
+    def call_accept(caller):
+        global _current_caller
+        if _current_caller is not None:
+            raise Exception("can't have 2 phone calls at the same time")
+        _current_caller = character.character(caller)
+
+        set_current_screen("phone_call_accept")
+        show_layer_at("phone_call")
+
+        renpy.transition(config.enter_transition)
+        renpy.call_screen("phone_call_accept")
+
+        _current_caller = None
+        set_current_screen(None)
+        show_layer_at([], reset=True)
+
+    class _CallEntry(object):
+        def __init__(self, caller, date, duration):
+            self.caller = character.character(caller).key
+            self.date = date
+            self.duration = duration
+
+        def _duration_to_str(self):
+            if self.duration is None:
+                return ""
+            return time.strftime("%M:%S", time.gmtime(self.duration))
+
+    def register_call(char1, char2, duration, date):
+        key1 = character.character(char1).key
+        key2 = character.character(char2).key
+
+        date = [int(i) for i in date.replace("\"", "").split("/")] if date != 'None' else [1, 1, 1970]
+
+        ch1 = phone.data[key1]["call_history"]
+        ch1.append(_CallEntry(key2, date, duration))
+
+        while len(ch1) > config.call_history_lenght: ch1.pop(0)
+
+        ch2 = phone.data[key2]["call_history"]
+        ch2.append(_CallEntry(key1, date, duration))
+
+        while len(ch2) > config.call_history_lenght: ch2.pop(0)
+
+default -100 phone.calls._current_caller = None
