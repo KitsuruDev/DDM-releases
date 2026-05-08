@@ -180,7 +180,7 @@ label act_1_day_8:
     n "Не в этом дело!"
     show natsuki lhip rhip -b1b
     show yuri dist cm oe
-    n "Помнишь, я рассказывала про главу клуба выпечки?"
+    n "Помнишь, я рассказывала про главу Клуба выпечки?"
     show natsuki cm
     show yuri b2b
     mc "Ну?"
@@ -457,7 +457,12 @@ label act_1_day_8:
     pause 1.5
 
     window auto
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     "Ага, вот!"
+    "Надо ей махнуть!"
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     n "Моника!"
     call window_close
     call skip_block_on
@@ -718,8 +723,12 @@ label act_1_day_8:
     n "{sc=3}КЕКСЫ!{/sc}"
     "{sc=3}..........{/sc}"
     n "{sc=2}Всё на месте...{/sc}"
+    if persistent.warning_interactive:
+        show warning_interactive_keyboard at hint_position onlayer front
     "{sc=1}И никого нет...{/sc}"
     n "Фу-у-у-у-ух..."
+    if persistent.warning_interactive:
+        hide warning_interactive_keyboard onlayer front
     "Пронесло..."
     call window_close
 
@@ -2126,7 +2135,7 @@ label act_1_day_8:
     show kamuko nerv om oe
     kam "Готовить у меня не очень получается..."
     show kamuko neut om oe b1d
-    kam "\"Но я же ведь состою в клубе выпечки\", -- ты мог подумать."
+    kam "\"Но я же ведь состою в Клубе выпечки\", -- ты мог подумать."
     show kamuko happ om ce rface -b1d
     kam "\"В нашей школе нет клуба любителей аниме и игр!\" -- отвечу я."
     show kamuko oe rdown
@@ -4103,7 +4112,7 @@ label act_1_day_8:
     show natsuki oe
     show monika ce
     show yuri cm
-    s "О нет, они начинаются пьянеть..."
+    s "О нет, они начинают пьянеть..."
     show sayori cm
     show yuri happ cm e1b
     "Уже развезло?"
@@ -5143,8 +5152,12 @@ label act_1_day_8:
     "Вот именно поэтому и не надо пить алкоголь."
     "Одни проблемы от него..."
     "И ведь кто-то догадался выпить этот разбавленный яд и принять его за «праздничный» напиток, в то время как организм пытался вывести отраву всеми возможными способами."
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     "Эх, никогда я людей не пойму."
     "Да и нет смысла."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     "Лучше заметочку в календарь накатаю..."
     call window_close
 

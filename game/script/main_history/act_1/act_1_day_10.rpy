@@ -349,8 +349,12 @@ label act_1_day_10:
     hide kotonoha
     "Да почему...{w}я чувствую слабость..."
     "Я смущаюсь!"
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     "Я не готова!"
     "Но нельзя подавать вид, нельзя..."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     "Иначе ничего не выйдет."
 
     call poem_act_1_day_10_ny
@@ -3026,7 +3030,7 @@ label act_1_day_10:
     r "Как Кохаку будет действовать, так всё и пойдёт."
     show reiko cm
     show kamuko om
-    kam "Но тогда клуб перестанет быть оффициальным!"
+    kam "Но тогда клуб перестанет быть официальным!"
     show reiko om
     show kamuko cm
     r "Да."
@@ -3440,8 +3444,12 @@ label act_1_day_10:
     "Да даже если и думал, то почему их раньше не было?"
     "В старшей школе всегда такие нагрузки, а появиться кошмары решили лишь под начало последнего года."
     mc "Блин, не понимаю!"
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     "Это так отвратительно: когда ты знаешь, что в тебе что-то ломается и меняется в негативную сторону, а ты даже не знаешь, что именно."
     "Не говоря уже о причинах..."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     pause 0.2
     play phone_sound new_message_mc
     pause 1.0
@@ -3550,8 +3558,12 @@ label act_1_day_10:
     mc "Космос..."
     "И что же про него написать?..."
     n "{size=19}Да, космос.{/size}"
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     n "{size=19}Начни там как-нибудь, с чего-то...{w}ох, ну типо ты посмотрел наверх, стал мечтать, м-м?{/size}"
     mc "М-м..."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     mc "Лады, попробуем..."
 
     call poem_act_1_day_10_mcn_1
@@ -3673,7 +3685,7 @@ label act_1_day_10:
     mc "Пусть хотя бы в таком виде."
     n "...м-м-м..."
     mc "Да давай, не стесняйся."
-    mc "Ты и так своими...{w}не очень белыми носками в меня упириваешься, чего тут стесняться?"
+    mc "Ты и так своими...{w}не очень белыми носками в меня упираешься, чего тут стесняться?"
     n "Они сильно грязные?"
     mc "Нет."
     mc "Но скоро стирать придётся."
@@ -3854,7 +3866,12 @@ label act_1_day_10:
     play sound sayori_hide_fast
     show natsuki e4c at lhide
     hide natsuki
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     mc "Только не навернись и никуда не воткнись!"
+    mc "Ф-ф-ф..."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     "Скоро мне придётся в коридорах ставить отбойники и направляющие стрелки..."
     call window_close
 

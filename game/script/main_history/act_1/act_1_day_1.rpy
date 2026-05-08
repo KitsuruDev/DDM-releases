@@ -47,8 +47,12 @@ label act_1_day_1:
     with dissolve_scene_full
     call autosave
     mc "{cps=20}М-м-м...{/cps}"
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     "{cps=20}Где мобильник?...{/cps}"
     "{cps=20}Надо посмотреть время...{/cps}"
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     "{cps=20}И проверить всё остальное на всякий случай...{/cps}"
     window hide
 
@@ -497,9 +501,9 @@ label act_1_day_1:
     "Кх-х-х, это издевательство надо мной!"
     "Хорошо тихое место есть в старом корпусе у перекрытой лестницы."
     "Спасибо, Юри..."
-    "И Монике спасибо за то, что всегда открывает ключом кладовку, когда я хочу почитать."
-    "Ни разу не получила отказ в такой просьбе."
     "И спасибо за хранение манги у себя дома летом."
+    "И Монике тоже спасибо: всегда открывает ключом кладовку, когда я хочу почитать."
+    "Ни разу не получила отказ в такой просьбе."
     "Ой, ладно, не будем терять драгоценное время."
     "Пора почитать мою любимую «Ванильную симфонию»!"
     "Люблю эту мангу ещё с детства."
@@ -585,7 +589,7 @@ label act_1_day_1:
     show hiroshi neut cm oe
     n "Я же сказала, отстань от меня."
     show hiroshi rdown
-    n "Мне литературного клуба за глаза хватает, меня там всё устраивает!"
+    n "Мне Литературного клуба за глаза хватает, меня там всё устраивает!"
     show hiroshi anno cm oe
     n "И менять его на другие я не собираюсь!"
     show hiroshi om
@@ -650,10 +654,14 @@ label act_1_day_1:
     show hiroshi doub om oe rhip
     h "Нацуки, хватит уже грубить, я даже ничего не сделал."
     show hiroshi cm
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     n "Не дам!"
     show hiroshi curi om oe
     h "Ну можно я хотя бы рядом присяду и послушаю, что в этом томе по сюжету?"
     show hiroshi cm
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     n "Уйди НАХРЕН!"
     hide hiroshi
     show hiroshi fc curi cm oe at el11
@@ -729,7 +737,7 @@ label act_1_day_1:
     scene white
     pause 0.1
     scene black
-    show particle_star
+    $ particle_star.show(transform=particle_star_fadeout)
     with dissolve
 
     call window_open
@@ -1709,7 +1717,7 @@ label act_1_day_1:
     scene white
     pause 0.1
     scene black
-    show particle_star
+    $ particle_star.show(transform=particle_star_fadeout)
     with dissolve
     pause 0.5
 
@@ -2210,8 +2218,13 @@ label act_1_day_1:
 
     call window_open
     scene bg bedroom with wipeleft_scene
+    mc "Ух..."
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     "Домашнее задание сделал, на завтра всё собрал..."
     "И даже добавил заметку на этот день в календарь."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     window hide
 
     python in phone.calendar:
@@ -2275,8 +2288,12 @@ label act_1_day_1:
     "Если попробовать цепляться за ключевые слова?"
     "К примеру, появится в мыслях первое, попытаюсь из него что-то сделать, потом второе, которое я скомпоную с первым, потом третье и так далее..."
     "В теории звучит интересно."
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     "А вот на практике?"
     "Эх, не попробуешь -- не узнаешь."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     "Приступим..."
 
     call poem_act_1_day_1

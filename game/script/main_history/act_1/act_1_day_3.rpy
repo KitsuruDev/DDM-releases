@@ -89,12 +89,19 @@ label act_1_day_3:
     "В Ниигате по утрам в апреле это норма."
     "Но обычно в такое время должно быть теплее, что опять с погодой случилось?"
     "..."
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     mc "Подождите-ка..."
+    mc "Время..."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     window hide
 
     $ phone.calendar.current_day = (18, _("СР"))
 
     python in phone.system:
+        cellular_data = True
+        wifi = False
         battery_level = 53
         clock = (5, 48)
 
@@ -719,7 +726,7 @@ label act_1_day_3:
     scene white
     pause 0.1
     scene black
-    show particle_star
+    $ particle_star.show(transform=particle_star_fadeout)
     with dissolve
 
     call window_open
@@ -1868,8 +1875,12 @@ label act_1_day_3:
     call show_poem(poem_y2, music=False)
     "Растянутость за счёт объединения двух строф в одну."
     "Деление на четверостишия отсутствует, вместо него -- сюжетные кластеры."
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     "Есть аллегории."
     "Ну и в целом стих достаточно объёмный."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     "Ладненько, Юри, попробуем твой стиль..."
 
     call poem_act_1_day_3

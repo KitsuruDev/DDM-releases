@@ -107,8 +107,12 @@ label nightmare_act_1_day_14:
     with vpunch
 
     call window_open
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     mc "{sc=4.0}!!!!!!!!!!{/sc}"
     mc "{sc=3.0}..........{/sc}"
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     call skip_block_on
     call window_close
 

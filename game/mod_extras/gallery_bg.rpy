@@ -136,7 +136,7 @@ init python:
     bg_name_transport_train = _("Поезд")
     bg_name_transport_train_short = _("поезд")
 
-    bg_name_nightmare = _("кошмар")
+    bg_name_nightmare = _("Кошмар")
 
 
     ##### Дом ГГ #####

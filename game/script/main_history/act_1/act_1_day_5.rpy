@@ -42,8 +42,12 @@ label act_1_day_5:
         "s" "Ты же помнишь что сегодня будет? Поиск печенья! Я уже у твоей двери! Просыпайся! Открывааай! (> ω <)"
 
     play phone_sound new_message_mc
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     pause 0.5
     mc "А?..."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     call skip_block_on
 
     python in phone.system:
@@ -402,7 +406,7 @@ label act_1_day_5:
     show kotonoha ldown rdown
     k "Кстати, как раз хотела у тебя спросить: как прошёл «первый шаг»?"
     show kotonoha cm
-    y "...Макс узнал меня поближе и решил немного обо мне позабиться..."
+    y "...Макс узнал меня поближе и решил немного обо мне позаботиться..."
     y "...наверное..."
     show kotonoha omb
     k "Ого-го!"
@@ -2472,7 +2476,7 @@ label act_1_day_5:
     show monika ce
     m "Благо сами «издевательства» не были серьёзными."
     show monika neut cm oe
-    mc "Что-то из разряда \"её вещь спрятали под другую парту, дёрганья за волосы, обзываловки\" и прочее дерьмо, на которое способен тупой малолетний ученик?"
+    mc "Что-то из разряда «её вещь спрятали под другую парту, дёрганья за волосы, обзываловки» и прочее дерьмо, на которое способен тупой малолетний ученик?"
     show monika dist om oe
     m "Да, что-то примерно такое..."
     show monika cm
@@ -2620,7 +2624,7 @@ label act_1_day_5:
     m "Нет, просто ты слишком сильно их сдерживаешь."
     m "Это бьёт по нервной системе, потому что они копятся внутри тебя."
     show monika dist om ce
-    m "И в один прекрасный момент эти чувства болезненно и некотролируемо вырвутся наружу."
+    m "И в один прекрасный момент эти чувства болезненно и неконтролируемо вырвутся наружу."
     show monika cm
     mc "Я пока не ощущал в себе такого."
     show monika flus om e1a
@@ -2813,7 +2817,11 @@ label act_1_day_5:
 
     call window_open
     scene bg bedroom with wipeleft_scene
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     "..."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     window hide
 
     python in phone.calendar:
@@ -3104,8 +3112,12 @@ label act_1_day_5:
     "..."
     "У меня нет других вариантов."
     "Если это мне не поможет, то я не знаю, что делать."
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     "Мой организм разваливается на глазах."
     "..."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     "Что ж, ручка в руке..."
 
     call poem_act_1_day_5

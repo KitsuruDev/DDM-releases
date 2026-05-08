@@ -37,8 +37,12 @@ label act_1_day_13:
     mc "Сайори, кажется, твой план сработал."
     s "{cps=20}...правда?...{/cps}"
     mc "Чего ты такая сонная?"
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     s "{cps=20}...так это...{w}сплю...{/cps}"
     mc "Логично..."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     "Время-то сколько..."
     window hide
 
@@ -590,7 +594,7 @@ label act_1_day_13:
     show yuri ml
     y "{sc=3}М-мы можем...{w}медленнее?!...{/sc}"
     show yuri mi
-    mc "{sc=3}Сейчас...{w}достучусть до неё!{/sc}"
+    mc "{sc=3}Сейчас...{w}достучусь до неё!{/sc}"
     show monika forward sport_casual mi e4c b2b n2 at j33
     show yuri at j32
     pause 0.2
@@ -1173,8 +1177,12 @@ label act_1_day_13:
     mc "Ура..."
     "Разойдясь по домам и отмывшись от пота и грязи, мы в кои-то веки можем начать обсуждение нашей будущей эпопеи."
     "Уже без 15-ти 8, а мы всё ещё ничего не придумали!"
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     "Нам бы по-хорошему уже в 9 (ну или в 9:30) выйти."
     "К слову, что там по чату..."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     "Я в него ещё не заглядывал."
     window hide
     call skip_block_on
@@ -1326,7 +1334,7 @@ label act_1_day_13:
         "n" "Да ладно, какая ирония"
         "k" "Не язви"
         "n" "Вививи ближе к делу!"
-        "k" "Оно находится на краю нашего районе"
+        "k" "Оно находится на краю нашего района"
         "k" "Мне проще вживую провести, чем тут расписывать"
         "mc" "А цены?"
         "k" "Приемлемые"
@@ -2568,7 +2576,7 @@ label act_1_day_13:
     show monika lsur md oe
     show kotonoha neut cm oe
     show sayori curi cm e1a
-    mc "К тому в каждой шахте есть вентиляция, которая постоянно работает!"
+    mc "К тому же в каждой шахте есть вентиляция, которая постоянно работает!"
     show sayori om
     s "А, да?..."
     show natsuki shoc cm oe
@@ -2614,12 +2622,16 @@ label act_1_day_13:
     show sayori sad cm oe
     mc "Хватит!"
     show natsuki pout cm oe
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     mc "Вы сами себя губите!"
     show monika neut cm oe
     show kotonoha neut cm oe -b2
     show sayori neut cm oe
-    mc "Лучше проверьте, если ли здесь связь или Интернет."
+    mc "Лучше проверьте, есть ли здесь связь или Интернет."
     show yuri e2b
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     mc "Нам нужно связаться с лифтёрами или хоть с кем-нибудь."
     show natsuki e1b
     show kotonoha e1b rhip
@@ -3019,7 +3031,7 @@ label act_1_day_13:
     y "Ух, не думаю, что я больше хочу жевать эту...{w}жвачку..."
     n "Пускать её по кругу было отвратительной идеей..."
     "Меня сейчас тошнить начнёт от их слов..."
-    s "Эй, жвачка -- всё ещё жевачка, верно?"
+    s "Эй, жвачка -- всё ещё жвачка, верно?"
     s "Ам!"
     k "УМФ!..."
     m "Е-е-еу-у-у, Сайори!"
@@ -3520,7 +3532,7 @@ label act_1_day_13:
     show natsuki oe b1d lhip
     n "А теперь представь, сколько таких ещё шляется в людных местах?"
     show natsuki -b1d
-    n "Мне каждой раз страшно одной появляться где угодно вдали от дома, поэтому по возможности прошу кого-нибудь составить мне компанию."
+    n "Мне каждый раз страшно одной появляться где угодно вдали от дома, поэтому по возможности прошу кого-нибудь составить мне компанию."
     n "В основном Юри, но иногда и других."
     show natsuki dist om oe ldown
     n "Но в последнее время все заняты, приходится одной кататься."
@@ -3595,8 +3607,12 @@ label act_1_day_13:
     "Сколько он там стоит..."
     "..."
     mc "100 иен за весь сеанс..."
+    if persistent.warning_interactive:
+        show warning_interactive_keyboard at hint_position onlayer front
     "...даже не за раунд?"
     mc "Фига се..."
+    if persistent.warning_interactive:
+        hide warning_interactive_keyboard onlayer front
     mc "Что ж, испытаем этот агрегат."
     stop noise_1 fadeout 3.0
     call window_close
@@ -4487,9 +4503,13 @@ label act_1_day_13:
     mc "...нет, вся это ситуация -- это реально провал."
     mc "У меня нет вариантов, что можно сделать."
     mc "Да я буквально сейчас подросток, который из себя ничего не представляет."
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     mc "..."
     mc "...провал..."
-    mc "Вечно всё через жопу, и никак иначе."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
+    mc "Вечно всё через задницу, и никак иначе."
 
     phone register "mc_m_chat":
         time year 2018 day 28 month 4 hour 19 minute 2
@@ -4538,7 +4558,7 @@ label act_1_day_13:
     mc "Ещё что-то там было по другим проблемам...{w}да пусть идут нахрен!"
     mc "Знаете, я тоже человек, который хочет, блин, отдохнуть!"
     mc "А нету этого отдыха."
-    mc "И не предвидется, пока на работу не выйду, а это лет через 5 минимум."
+    mc "И не предвидится, пока на работу не выйду, а это лет через 5 минимум."
     mc "За это время сдохнуть кучу раз можно."
     mc "..."
     mc "Домашнее задание я сделал."
@@ -4553,8 +4573,12 @@ label act_1_day_13:
     mc "......"
     mc "Вообще расслабиться не могу!"
     mc "Написать стих, чтобы окончательно себя добить?"
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     mc "Эта рутина точно отяготит и вырубит нафиг."
     mc "Только в этот раз я могу прерваться в любой момент, потому что в клубе никто не говорил об обмене стихами в следующий понедельник."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     mc "Собственно говоря...{w}где ручка и тетрадный лист..."
 
     call poem_act_1_day_13

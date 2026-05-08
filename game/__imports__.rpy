@@ -14,8 +14,9 @@ init python:
     )
 
     from store.Effects import (
-        InvertScreenAnimated, TearObjectAnimated, TearScreenAnimated, AnimatedMask, RectStatic, RectCluster, ParticleBurst,
-        Blood, shake, screenshot_srf
+        InvertScreenAnimated, TearObjectAnimated, TearScreenAnimated, AnimatedMask, RectStatic,
+        RectClusterDisplay, ParticleBurstDisplay, BloodDisplay,
+        shake, screenshot_srf
     )
     
     from store.Achievements import Achievement, AchievementCount

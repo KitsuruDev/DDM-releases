@@ -4,7 +4,7 @@
 ## options.rpy
 
 define config.name = "Doki Doki Метанойя"
-define config.version = "Alpha-1.0"
+define config.version = "Alpha-1.1"
 
 # name of your mod build when you package mod in the Ren'Py Launcher or DDMM (Doki Doki Mod Maker)
 # Note:

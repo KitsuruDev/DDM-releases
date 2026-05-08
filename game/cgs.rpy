@@ -445,22 +445,11 @@ image n_cg2_base_horror_gallery_cg:
 ### Хоррорное дополнение к CG, где Нацуки сидит на полу у кладовки рядом с ГГ (день 4) (кошмар ГГ):
 
 # Кошмарная версия Нацуки (пиксели на глазах)
-image n_cg1b = Composite((1280, 720), (0, 0), "images/cg/n_cg1b.png", (882, 325), "n_rects1", (732, 400), "n_rects2", (850, 475), "n_rects3")
+image n_cg1b = "images/cg/n_cg1b.png"
 
-image n_rects1:
-    RectCluster(Solid("#000"), 12, 30, 30).sm
-    pos (899, 350)
-    xysize (34, 34)
-
-image n_rects2:
-    RectCluster(Solid("#000"), 12, 30, 24).sm
-    pos (749, 430)
-    xysize (34, 34)
-
-image n_rects3:
-    RectCluster(Solid("#000"), 4, 15, 5).sm
-    pos (764, 490)
-    xysize (30, 20)
+default n_rects1 = RectClusterDisplay("#000", 12, 30, 30, 899, 350, 34, 34)
+default n_rects2 = RectClusterDisplay("#000", 12, 30, 24, 749, 430, 34, 34)
+default n_rects3 = RectClusterDisplay("#000", 10, 15, 11, 855, 490, 30, 20)
 
 
 

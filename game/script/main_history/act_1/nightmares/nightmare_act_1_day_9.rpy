@@ -166,10 +166,14 @@ label nightmare_act_1_day_9:
     show yuri oe
     y "{sc=1.5}Я хочу удовлетворить тебя!{/sc}"
     y "{sc=1.5}Я хочу слиться с тобой в экстазе!{/sc}"
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     y "{sc=1.5}Я хочу, чтобы все наши жидкости вышли наружу\nи перемешались!{/sc}"
     y "{sc=3}ЛЮБИ МЕНЯ!!!{/sc}"
     $ y_name = _("{glitch=15}{color=#000}Юри{/color}{/glitch}")
     show yuri cm
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     mc "{sc=3}ВАЛИ ОТСЮДА!!!{/sc}"
     call screen punch_yuri_ghost_a1_nd9
     scene white

@@ -269,11 +269,11 @@ image y_chibi_poem glitch:
     "gui/poemgame/y_sticker_1_broken.png"
     xoffset ChibiAnimation_y.offset xzoom ChibiAnimation_y.zoom zoom 3.0
     block:
-        function randomPauseYuri
+        function ChibiAnimation_y.pause
         parallel:
             chibi_move
         parallel:
-            function randomMoveYuri
+            function ChibiAnimation_y.move
         repeat
 
 # Чиби-стикер Юри с лицом из японского хоррора

@@ -92,7 +92,7 @@ label qte_act_1_day_8:
         scene white
         pause 0.1
         scene black
-        show particle_star
+        $ particle_star.show(transform=particle_star_fadeout)
         with dissolve
         window show(Dissolve(0.25))
         n "{sc=3}А-А-АЙ!!!{/sc}"

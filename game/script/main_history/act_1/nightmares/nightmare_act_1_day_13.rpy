@@ -183,7 +183,7 @@ label nightmare_act_1_day_13:
     mc "Чёрт, всё в голове перемешалось."
     show monikammm hdown
     voice "mmm/act_1/day_13/0039"
-    mmm "Да по глазам вижу, что ты нихрена ничего не понял."
+    mmm "Да по глазам вижу, что нихрена ты ничего не понял."
     show monikammm e2
     voice "mmm/act_1/day_13/0040"
     mmm "Придётся разжевать абсолютно всё..."
@@ -1027,9 +1027,13 @@ label nightmare_act_1_day_13:
     mc "З-а-ч-е-м ты всё это сделала?"
     voice "mmm/act_1/day_13/0269"
     mmm "Я же сказала..."
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     voice "mmm/act_1/day_13/0270"
     mmm "Просто. {w=0.65}Пытаюсь. {w=0.65}Помочь."
     mc "..."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     show monikammm hhandshake
     voice "mmm/act_1/day_13/0266"
     mmm "Время выбирать."
@@ -1194,7 +1198,8 @@ label nightmare_act_1_day_13:
     pause 0.5
     show monikammm hdown
     pause 0.25
-    show monikammm mrect
+    show monikammm -smile
+    $ mmm_rects_mouth.show()
     pause 0.25
     $ currentpos = get_pos(channel="music")
     stop music
@@ -1204,7 +1209,7 @@ label nightmare_act_1_day_13:
     stop sound
     $ audio.m1_2 = "<from " + str(currentpos) + " loop 0>bgm/m1.ogg"
     play music m1_2
-    show monikammm -mrect
+    $ mmm_rects_mouth.hide()
     hide screen tear_screen
 
     $ style.say_dialogue = style.normal
@@ -2784,7 +2789,7 @@ label nightmare_act_1_day_13:
     voice "mmm/act_1/day_13/0732"
     mmm "Что такое «мнение» -- жалкая попытка привлечь к себе внимание под видом единственного истинного мнения."
     voice "mmm/act_1/day_13/0733"
-    mmm "Буквально крик души из разряда: \"Ну лайкните меня, ну посмотрите на меня, я со всеми вами, я -- часть большего!\""
+    mmm "Буквально крик души из разряда: \"Ну лайкните меня, ну посмотрите на меня, я со всеми вами, я -- часть большего!\"."
     show monikammm e3
     if persistent.censorship:
         voice "mmm/act_1/day_13/0734c"
@@ -3670,7 +3675,9 @@ label nightmare_act_1_day_13_monikammm_smile(status = "on", glitch_text = True):
     $ quick_menu = False
     window hide(None)
 
-    show monikammm mrect
+    if status == "off":
+        show monikammm -smile
+    $ mmm_rects_mouth.show()
     pause 0.25
     $ currentpos = get_pos(channel="music")
     stop music
@@ -3680,10 +3687,9 @@ label nightmare_act_1_day_13_monikammm_smile(status = "on", glitch_text = True):
     stop sound
     $ audio.m1_2 = "<from " + str(currentpos) + " loop 0>bgm/m1.ogg"
     play music m1_2
+    $ mmm_rects_mouth.hide()
     if status == "on":
         show monikammm hcross smile
-    else:
-        show monikammm -mrect
     hide screen tear_screen
 
     if glitch_text:

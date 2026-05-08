@@ -161,13 +161,13 @@ label before_credits:
     pause 1.0
     hide monika
     play sound s_kill_glitch1
-    show monika_body_glitch1
+    show monika g2
     pause 0.3
-    hide monika_body_glitch1
+    hide monika g2
     play noise_1 interference
-    show monika_body_glitch2
+    show monika g3
     pause 1.9
-    hide monika_body_glitch2
+    hide monika g3
     stop noise_1
     pause 1.5
 

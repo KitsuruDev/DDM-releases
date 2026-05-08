@@ -151,7 +151,7 @@ label act_1_day_11:
     s "Ух..."
     show sayori cm e1a
     mc "Это хорошо, что вовремя пресекли этот дебилизм."
-    mc "А теперь представь, какие последствия были бы, если это официально вписали?"
+    mc "А теперь представь, какие бы были последствия, если бы это официально вписали?"
     show sayori worr cm oe
     mc "Пациент бы всю жизнь жалел о таком визите."
     mc "Грубо говоря, пришёл с мелкими расстройствами -- ушёл с тяжёлыми."
@@ -630,7 +630,7 @@ label act_1_day_11:
     show yuri e1b
     y "В последнее время ещё Либитина, но она больше как знакомая, появляющаяся исключительно с первой."
     show yuri cm e1d
-    mc "Вообще удивительно, как ты могла подружить с Нацуки."
+    mc "Вообще удивительно, как ты смогла подружиться с Нацуки."
     mc "Если бы я оценивал её развитие психотипа, то поставил бы ниже тебя."
     mc "Но это не значит, что он хуже или глупее."
     mc "Ну, я думаю, ты поняла."
@@ -816,7 +816,7 @@ label act_1_day_11:
     "Хотя есть ли там что-то из ряда вон выходящее?"
     "Клуб -- как клуб, ничего такого."
     play noise_1 school_corridor_empty_noise fadein 6.0
-    "Хм, состою в нём всего полторы недели, а я уже с ним так сроднился..."
+    "Хм, состою в нём всего полторы недели, а уже так с ним сроднился..."
     mc "Неотъемлемая часть..."
     n "{size=19}О, Макс.{/size}"
     k "{size=19}Привет!{/size}"
@@ -1372,8 +1372,12 @@ label act_1_day_11:
     scene bg corridor with wipeleft_scene
     mc "Пф-ф-ф..."
     "Что вчера полудохлый пришёл, что сегодня..."
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     "Хорош разваливаться, а?"
     "Тебе только пару месяцев назад 18 стукнуло."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     "Хотя за это короткое время я успел изрядно погореть, даже не повидав истинной взрослой жизни..."
 
     scene bg school old_corridor door with dissolve
@@ -1632,7 +1636,7 @@ label act_1_day_11:
     show monika laug cm oe
     show natsuki lsur cm oe
     show yuri laug cm oe
-    mc "Первое: о Великая повелительница кексов и манги, снизойди до простого смертного и прими от него большое человеческое извинение за некотролирумое действие."
+    mc "Первое: о Великая повелительница кексов и манги, снизойди до простого смертного и прими от него большое человеческое извинение за неконтролируемое действие."
     show kotonoha ce
     show natsuki nerv om oe ldown rdown
     show yuri ce
@@ -1966,7 +1970,7 @@ label act_1_day_11:
     n "Моника, хватит мямлить!"
     n "Даже маленькие стихи -- это стихи!"
     y "Вот-вот."
-    y "Некоторые писатели вообще по пару четверостиший пишут и на этом закачивают."
+    y "Некоторые писатели вообще по пару четверостиший пишут и на этом заканчивают."
     y "Да и мы в прошлом тоже так делали..."
     m "...ух, простите."
     m "Я что-то слишком...{w}замечталась, наверное."
@@ -2527,8 +2531,12 @@ label act_1_day_11:
     "И, в довершение всего, окончательно развалился."
     "Не, голову отпустило."
     "Но ноги полностью умерли."
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     "Ходить нормально вообще не могу."
     mc "Ох-х-х..."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     mc "Надо написать Юри, пока время и оставшиеся силы позволяют."
     call skip_block_on
 
@@ -2756,10 +2764,14 @@ label act_1_day_11:
     show yuri cm
     mc "Тем более."
     show yuri oe rdown
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     mc "Тогда пишем стих про дождь?"
     show yuri om
     y "Да."
     show yuri cm
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     mc "Хорошо, садись сюда поближе..."
 
     call poem_act_1_day_11
@@ -3163,8 +3175,12 @@ label act_1_day_11:
     "А сколько времени?"
     mc "Ладненько, давай я встану, разомнусь..."
     mc "Затёк слишком."
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     y "...м-м..."
     "..."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     mc "Ой, у-у-ух-х-х..."
 
     scene bg bedroom with dissolve
@@ -3692,8 +3708,12 @@ label act_1_day_11:
     mc "Вот ей об этом точно нужно сообщить."
     mc "А Сайори?"
     "..."
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     mc "Но это ТАКАЯ для Юри личная информация, что её утечка приведёт к крайне негативным последствиям."
     mc "Может быть, позже Сайори просвещу, но точно не сейчас."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     mc "Всё, сейчас напишем Монике..."
     call skip_block_on
 
@@ -3803,7 +3823,7 @@ label act_1_day_11:
         "m" "Прямо до дома?"
         "mc" "Ой, Моника, не надо тут псевдоревности"
         "mc" "Ты же видела, какой ливень был"
-        "mc" "А Юри умудрился прийти в одном свитере с небольшим зонтиком, из которого она точно выросла"
+        "mc" "А Юри умудрилась прийти в одном свитере с небольшим зонтиком, из которого она точно выросла"
         "m" "Ладно-ладно)"
     $ phone.system.clock = (19, 15)
     phone discussion "mc_m_chat":

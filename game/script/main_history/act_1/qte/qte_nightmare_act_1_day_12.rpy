@@ -1,3 +1,28 @@
+transform natsuki_ghost_run_animation_catch:
+    pos (640, 360) anchor (0.5, 0.38) alpha 0
+    parallel:
+        easeout 0.25 zoom 3.5
+    parallel:
+        ease 0.025 xoffset -20
+        ease 0.025 xoffset 20
+        repeat
+    parallel:
+        ease 0.1 alpha 1.0
+
+transform natsuki_ghost_run_animation_catch_eyes_left:
+    pos (520, 320) anchor (0.5, 0.38) alpha 0
+    parallel:
+        easeout 0.25 zoom 3.5 xoffset -50
+    parallel:
+        ease 0.1 alpha 1.0
+
+transform natsuki_ghost_run_animation_catch_eyes_right:
+    pos (660, 320) anchor (0.5, 0.38) alpha 0
+    parallel:
+        easeout 0.25 zoom 3.5 xoffset 50
+    parallel:
+        ease 0.1 alpha 1.0
+
 
 screen touch_yuri_ghost_a1_nd12:
     button:
@@ -120,15 +145,19 @@ label nightmare_act_1_day_12_qte_0:
     play sound club_door_knock
     with vpunch
     pause 1.5
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     n "Слушай, а чего мне тут стоять и бездействовать?"
-    show n_rects_left zorder 2:
-        yoffset -20 alpha 0
-        easeout 12 alpha 1.0
-    show n_rects_right zorder 2:
-        yoffset -20 alpha 0
-        easeout 12 alpha 1.0
+
+    python:
+        n_rects_left.show()
+        n_rects_right.show()
+        renpy.transition(Dissolve(12), layer="master")
+
     n "Я тоже хочу тебя убить."
     n "Ты урод."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     n "Но ты обязательно поиграешь со мной в игру \"Сдохни или умри\"."
     play sound club_door_knock
     with vpunch
@@ -152,15 +181,16 @@ label nightmare_act_1_day_12_qte_0:
 
     show screen punch_natsuki_ghost_a1_nd12
 
-    hide n_rects_left
-    hide n_rects_right
+    python:
+        n_rects_left.hide()
+        n_rects_right.hide()
+
     show natsuki ghost3
-    show n_rects_neck_right zorder 4:
-        pause 0.2
-        easeout 0.25 zoom 4.5 xoffset 250 yoffset -250
-    show n_rects_neck_left zorder 4:
-        pause 0.2
-        easeout 0.25 zoom 4.5 xoffset 250 yoffset -250
+
+    python:
+        n_rects_neck_left.show(zorder=4, transform=neck_left_anim)
+        n_rects_neck_right.show(zorder=4, transform=neck_right_anim)
+
     pause 0.2
     hide natsuki
 
@@ -211,9 +241,13 @@ label nightmare_act_1_day_12_qte_1:
 
     window auto
     y "{sc=3}СТОЙ, МАКС, СТО-О-ОЙ!!!{/sc}"
+    if persistent.warning_interactive:
+        show warning_interactive_keyboard at hint_position onlayer front
     "{sc=3}СВОЛОЧЬ, ПЫТАЕТСЯ ЗАТОРМОЗИТЬ!{/sc}"
     "{sc=3}ОТКУДА У НЕЁ НОЖ?!{/sc}"
-    "{sc=3}ПЛЕВАТЬ, НУЖНО СОПРОТИВЛЯТЬСЯ И БЕЖАТЬ ВНИЗ!!!{/sc}"
+    if persistent.warning_interactive:
+        hide warning_interactive_keyboard onlayer front
+    "{sc=3}ПЛЕВАТЬ, НУЖНО СОПРОТИВЛЯТЬСЯ И БЕЖАТЬ\nВНИЗ!!!{/sc}"
     window hide
 
     call screen qte_key_interactive("ПРОБЕЛ")
@@ -255,7 +289,7 @@ label nightmare_act_1_day_12_qte_1:
         alpha 0.5
     show layer master at run_shaking
     with wipeleft_scene
-    y "{sc=3}ЛЮБОВЬ -- САМОЕ ЛУЧШЕЕ ЧУВСТВО ИЗ ВСЕХ!!!{/sc}"
+    y "{sc=3}ЛЮБОВЬ - САМОЕ ЛУЧШЕЕ ЧУВСТВО ИЗ ВСЕХ!!!{/sc}"
     y "{sc=3}ПЕРЕСТАНЬ УБЕГАТЬ!!!{/sc}"
     window hide
 
@@ -354,7 +388,7 @@ label nightmare_act_1_day_12_qte_2:
 
     "{sc=3}ЗНАЮ!{/sc}"
     "{sc=3}СПРЯЧУСЬ СБОКУ, ВЫБЬЮ НОЖ, А ДАЛЬШЕ ПО\nОБСТАНОВКЕ!{/sc}"
-    "{sc=3}ГЛАВНОЕ -- ОБЕЗВРЕДИТЬ ЕЁ И НЕ ДАТЬ МЕНЯ\nПАРАЛИЗОВАТЬ!{/sc}"
+    "{sc=3}ГЛАВНОЕ - ОБЕЗВРЕДИТЬ ЕЁ И НЕ ДАТЬ МЕНЯ\nПАРАЛИЗОВАТЬ!{/sc}"
     play sound club_door_knock
     with vpunch
     pause 1.0
@@ -402,8 +436,12 @@ label nightmare_act_1_day_12_qte_natsuki_ghost:
     window auto
     "{sc=3}УВОРАЧИВАЕТСЯ, ГАДИНА!{/sc}"
     "{sc=3}И НОСИТСЯ ПО-СУМАСШЕДШЕМУ!{/sc}"
+    if persistent.warning_interactive:
+        show warning_interactive_keyboard at hint_position onlayer front
     "{sc=3}ТЕПЕРЬ ЕЙ ТАК НЕ ВЛУПИШЬ!{/sc}"
     "{sc=3}НУЖНО ОТКРЫТОЕ ПРОСТРАНСТВО!{/sc}"
+    if persistent.warning_interactive:
+        hide warning_interactive_keyboard onlayer front
     "{sc=3}И БЕЖАТЬ ЕЩЁ БЫСТРЕЕ!{/sc}"
 
     $ qte_stage = 3
@@ -461,7 +499,7 @@ label nightmare_act_1_day_12_qte_3:
     scene black with wipeleft_scene
     queue music confrontation_part_6
     window auto
-    "{sc=3}ПО СТУПЕНЬКАМ ОНА ДОЛЖНА БЕЖАТЬ МЕДЛЕННЕЕ!{/sc}"
+    "{sc=3}ПО СТУПЕНЬКАМ ОНА ДОЛЖНА БЕЖАТЬ\nМЕДЛЕННЕЕ!{/sc}"
     "{sc=3}НО ЭТО НЕ ПОВОД РАССЛАБЛЯТЬСЯ!{/sc}"
     "{sc=3}ШЕВЕЛИСЬ НАВЕРХ!!!{/sc}"
     window hide
@@ -546,12 +584,12 @@ label nightmare_act_1_day_12_qte_loss:
         show yuri turned yand om oe lup_item knife at movein_hugs
         pause 0.3
     elif qte_stage == 3:
-        show natsuki ghost2 run at natsuki_ghost_run_animation:
-            pos (640, 360) anchor (0.5, 0.5) alpha 0
-            parallel:
-                ease 0.1 alpha 1.0
-            parallel:
-                ease 0.25 yoffset -500
+        show natsuki ghost2 at natsuki_ghost_run_animation_catch
+        
+        python:
+            n_rects_left.show(zorder=2, transform=natsuki_ghost_run_animation_catch_eyes_left)
+            n_rects_right.show(zorder=2, transform=natsuki_ghost_run_animation_catch_eyes_right)
+
         play sound natsuki_ghost_run
         pause 0.25
 
@@ -575,13 +613,13 @@ label nightmare_act_1_day_12_qte_loss:
 
     python:
         phrases_n_a1_d12_qte_loss = (
-        "ОЧНИ-И-ИСЬ!!!",
-        "ПРИДИ В СЕБЯ!",
-        "ХВАТИТ ПРОВАЛИВАТЬСЯ В СЕБЯ!",
-        "ПЕРЕСТАНЬ ТУПИТЬ!",
-        "ДЕЙСТВУЙ, ДАВАЙ!",
-        "ВОЗЬМИ СЕБЯ В РУКИ!",
-        "ЗАДАВИ СВОЁ ВООБРАЖЕНИЕ!"
+            "ОЧНИ-И-ИСЬ!!!",
+            "ПРИДИ В СЕБЯ!",
+            "ХВАТИТ ПРОВАЛИВАТЬСЯ В СЕБЯ!",
+            "ПЕРЕСТАНЬ ТУПИТЬ!",
+            "ДЕЙСТВУЙ, ДАВАЙ!",
+            "ВОЗЬМИ СЕБЯ В РУКИ!",
+            "ЗАДАВИ СВОЁ ВООБРАЖЕНИЕ!"
         )
 
         phrase = random.choice(phrases_n_a1_d12_qte_loss)

@@ -2000,7 +2000,7 @@ label act_1_day_2:
     show sayori cm e2a
     mc "Стой."
     show sayori oe
-    mc "Пообещай мне, что с этого дня ты будешь становится истинной собой."
+    mc "Пообещай мне, что с этого дня ты будешь становиться истинной собой."
     show sayori laug om oe ldown rdown
     s "Ладно-ладно!"
     show sayori anno mi ce
@@ -2072,8 +2072,12 @@ label act_1_day_2:
     "Во втором четверостишии уже перекрёстная рифма: через строку."
     "А дальше вообще мешанина."
     "Сайори совсем не напрягалась."
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     "Как пришла идея, так и легла сразу."
     "Но такое утром немудрено: голова в это время не варит."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     "Всё, попробуем стиль Сайори..."
 
     call poem_act_1_day_2

@@ -64,7 +64,9 @@ init -1 python in GalleryCG:
                         f.close()
                         output_surface.blit(pygame.image.load(BytesIO(image_data)), (0, 0))
 
-                    pygame.image.save(output_surface, os.path.join(config.basedir, "export_gallery_cg", self.name + ".png").replace("\\", "/"))
+                    pygame.image.save(
+                        output_surface, os.path.join(config.basedir, "export_gallery_cg", self.name + ".png"
+                    ).replace("\\", "/"))
 
                     message_var = _("Сцена (CG) успешно экспортирована в папку \"export_gallery_cg\".")
                     chibi_var = ("s_chibi hop", 117)
@@ -174,7 +176,7 @@ init python:
         timeline = f"{cg_timeline_act_1} 7",
         place = _("Кухня в доме Макса"),
         description = _("Испечённые кексы для празднования воссоединения Литературного клуба."),
-        artist = _("редактирование -- KitsuruDev (использованы свободные изображения)"),
+        artist = _("Редактирование -- KitsuruDev (использованы свободные изображения)"),
         image_show = "cupcakes_cg_act_1_day_7",
         image_export = "mod_assets/cg/main_history/act_1/day_7/cup.png"
     )
@@ -225,7 +227,7 @@ init python:
         place = _("Коридор школы"),
         description = _("Моникаммм осматривает Макса вблизи в его кошмаре."),
         artist = _("Художник образа -- Satchely из Team Salvato\nРедактирование спрайта -- KitsuruDev"),
-        image_show = Composite((1280, 720), (0, 0), "bg glitch", (-300, -500), "monikammm_cg_act_1_day_11_gallery_cg"),
+        image_show = Composite((1280, 720), (0, -550), "bg glitch", (-300, -500), "monikammm_cg_act_1_day_11_gallery_cg"),
         image_export = None
     )
 

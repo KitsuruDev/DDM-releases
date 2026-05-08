@@ -32,8 +32,12 @@ label act_1_day_6:
     with dissolve_scene_full
     call autosave
     "..."
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     mc "...спать уже не хочется."
     "Тогда...{w}сразу отпишусь Монике..."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     call skip_block_on
 
     python in phone.system:
@@ -110,7 +114,7 @@ label act_1_day_6:
         "m" "Как выйдешь на неё, пойдёшь вдоль этой улицы на север и свернёшь налево на первую зигзагообразную улицу"
     $ phone.system.clock = (9, 4)
     phone discussion "mc_m_chat":
-        "m" "Дойдёшь по ней до ещё одного перекрёстка и там на углу будем мой двухэтажный дом"
+        "m" "Дойдёшь по ней до ещё одного перекрёстка и там на углу будет мой двухэтажный дом"
         "m" "Его-то, надеюсь, помнишь?)"
     "Ё-моё..."
     phone discussion "mc_m_chat":
@@ -938,10 +942,14 @@ label act_1_day_6:
     play phone_sound new_message_yuri
     pause 1.0
     show natsuki curi cm oe
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     y "Ой..."
     show natsuki om ldown rdown
     n "А?"
     show natsuki cm
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     y "Это у меня что-то в телефоне..."
     call skip_block_on
 
@@ -1241,10 +1249,14 @@ label act_1_day_6:
     show monika om
     m "Я буду вести тебя по улицам и говорить, что им писать."
     show monika dist om oe
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     m "Иначе я буду постоянно отвлекаться на экран и сбиваться с пути."
     show monika happ cm oe b1b n2
     mc "Ты сегодня в ударе, Моника..."
     show monika om ce rdown
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     m "Да, в странном состоянии сейчас, хах..."
     show monika cm
     call skip_block_on
@@ -3370,10 +3382,14 @@ label act_1_day_6:
     show monika dist om e1c
     m "Даже и не верится, что ещё обед, хотя в сон так клонит..."
     show monika cm
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     mc "Сегодня было много всего эмоционального, неудивительно."
     show monika om ce
     m "И не говори."
     show monika cm
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     "Точно, заметку надо сделать..."
     stop music fadeout 2.0
     call window_close
@@ -3493,7 +3509,7 @@ label act_1_day_6:
     "Есть ещё Моника."
     "И с ней у меня проще получается общаться."
     "Тоже есть много общего."
-    "И, учитывая её странно поведение, тоже неровно ко мне дышит..."
+    "И, учитывая её странное поведение, тоже неровно ко мне дышит..."
     "И как раз по степени близости она стоит на первом месте."
     "И если абстрагироваться от всех своих мыслей, неготовности нести ответственность за отношения и всего того, что я успел пережить со всеми..."
     "...я бы выбрал..."

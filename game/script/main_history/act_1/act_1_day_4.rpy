@@ -368,13 +368,19 @@ label act_1_day_4:
 
     call window_open
     scene bg school old_corridor door with wipeleft_scene
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     "Дверь..."
     "Надо открыть дверь..."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     call skip_block_on
 
     call screen club_door_lock_screen
     pause 0.5
+
     mc "Не понял..."
+    
     call screen club_door_lock_screen
     pause 0.5
 
@@ -1112,7 +1118,7 @@ label act_1_day_4:
     show monika om oe
     m "Вот-вот."
     m "Но вместо обращения за помощью, может, из-за бедности и собственных комплексов, отец стал пить."
-    m "Нечасто, да, но до такой степени, что его пробивает на некотролируемую агрессию."
+    m "Нечасто, да, но до такой степени, что его пробивает на неконтролируемую агрессию."
     m "А выплёскивал он её на всё, что было под рукой."
     show monika flus om oe
     m "...в том числе и на Нацуки..."
@@ -2547,8 +2553,12 @@ label act_1_day_4:
     "Ну а что тут?"
     "Преимущественно четверостишия."
     "Простое написание без всяких глубоких смыслов..."
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     "Но важность с актуальностью от этого никуда не теряется."
     "Рифма тоже простая: через строку."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     mc "Попробуем..."
 
     call poem_act_1_day_4

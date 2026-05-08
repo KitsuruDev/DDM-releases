@@ -39,7 +39,7 @@ label prologue_day_1:
     phone_mc "Алло."
 
     if not persistent.first_phone_call:
-        $ persistent.first_phone_menu_apps = True
+        $ persistent.first_phone_call = True
         $ renpy.save_persistent()
         hide hint_phone_call onlayer front
 
@@ -66,7 +66,7 @@ label prologue_day_1:
     show mc_mom cm
     phone_mc "Да, конечно, уже это делаю."
     show mc_mom om brow
-    phone_mcm "Ты же помнишь, как можно добраться до нашего дома в Ниига{image=accent_call_low_register}{space=-15}те?"
+    phone_mcm "Ты же помнишь, как можно добраться до нашего дома в Ниига{image=accent_call_low_register}{space=-10}те?"
     show mc_mom cm
     phone_mc "Помню я, помню."
     phone_mc "Уже столько раз там бывали, смогу спокойно соориентироваться."
@@ -279,10 +279,19 @@ label prologue_day_1:
     "Может, они помогут мне плавно уснуть..."
     call window_close
 
-    pause 10.0
+    pause 8.0
 
-    play phone_sound new_message_mc
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
+
     pause 2.0
+
+    play phone_sound new_message_mc   
+
+    pause 2.0
+
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
 
     $ quick_menu = True
     call skip_block_on
@@ -371,7 +380,8 @@ label prologue_day_1:
         "s" "Ничего я себе не отсижу -- тут мягко!\n(# > . <)"
     mc "{size=19}Пф...{/size}"
     $ phone.system.clock = (11, 27)
-    "Отрубаемся на этой странной ноте."
+    "Отрубаемся на этой странной ноте отключением мобильного Интернета."
+    "Хоть сейчас это не забуду сделать..."
     window hide
 
     call phone_status_bar_button('cellular_data', disable = True)
@@ -546,8 +556,12 @@ label prologue_day_1:
 
     window auto
     "О, вот она!"
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     "Крикнуть?"
     "Но очень не хочется привлекать внимание толпы..."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     "Лучше энергично помашу ей рукой, должна заметить."
     call window_close
 
@@ -580,7 +594,7 @@ label prologue_day_1:
     scene white
     pause 0.1
     scene black
-    show particle_star
+    $ particle_star.show(transform=particle_star_fadeout)
     with dissolve
 
     call window_open
@@ -1476,6 +1490,8 @@ label prologue_day_1:
     pause 8.0
 
     call window_open
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     "Чёрт, сообщение..."
     call skip_block_on
 
@@ -1486,6 +1502,8 @@ label prologue_day_1:
 
     phone discussion "mc_mcm_chat"
     "А ещё вай-фай..."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     "Хотя бы не мобильный Интернет, ха-ха."
     "Зря здесь роутер устанавливали?"
     window hide
@@ -2202,7 +2220,7 @@ label prologue_day_2:
     scene white
     pause 0.1
     scene black
-    show particle_star
+    $ particle_star.show(transform=particle_star_fadeout)
     with dissolve
 
     call window_open
@@ -3424,8 +3442,12 @@ label prologue_day_2:
     s "Хм-хм-хм~"
     "Интересно, как там--{nw}"
     play phone_sound new_message_sayori
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     pause 1.0
     s "О!"
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     call skip_block_on
 
     python in phone.system:
@@ -3500,7 +3522,7 @@ label prologue_day_2:
     mr_cow "Не вижу в этом плюсов."
     s "Разве?"
     mr_cow "Абсолютно."
-    mr_cow "Ведь ты самый близкий и значимый для Макса и для своей семьи, а ещё для Моники и её клуба."
+    mr_cow "Ведь ты самый близкий и значимый человек для Макса и своей семьи, а ещё для Моники и её клуба."
     mr_cow "Что будет с ними, когда они потеряют ту Сайори, которую знают?"
     mr_cow "И увидят вместо неё плюшевую корову?"
     s "..."
@@ -3732,7 +3754,7 @@ label prologue_day_2:
     sm_nvl "Аматэрасу думала, что завистливый Сусаноо ранил его, чтобы так отомстить ей."
     sm_nvl "Она содрогнулась от страха, отвела коня на лечение своим воинам, приказала его защищать, а сама удалилась в пещеру небесного жилища."
     sm_nvl "Весь мир погрузился во мрак."
-    sm_nvl "Радость и добродушие, душевная чистота и мир, надежда и любовь — всё исчезло с угасшим светом."
+    sm_nvl "Радость и добродушие, душевная чистота и мир, надежда и любовь -- всё исчезло с угасшим светом."
     if tale_amaterasu_full == True:
         sm_nvl "Злые духи, которые таились по тёмным углам, отважились выйти на волю и бродить повсюду."
         sm_nvl "Их ужасающий смех и помрачающие разум песни наполняли ужасом сердца тех, кто их слышал."
@@ -3743,7 +3765,7 @@ label prologue_day_2:
     sm_nvl "Но чем им побудить вернуться ей в этот мир мрака и раздора?"
     sm_nvl "Долго думали боги, и, наконец, был найден план, как вывести богиню из заточения."
     sm_nvl "Они заставили Сунаноо раскаяться за свою зависть перед Аматэрасу, предложив ему держать зеркало перед входом в пещеру."
-    sm_nvl "Потом одна часть богов занялась изготовлением ширмы из рисовой соломы, чтобы закрыть ей вход в пещеру, когда богиня выйду наружу."
+    sm_nvl "Потом одна часть богов занялась изготовлением ширмы из рисовой соломы, чтобы закрыть ею вход в пещеру, когда богиня выйду наружу."
     sm_nvl "Другая часть богов готовила музыкальные инструменты, чтобы развеселить Аматэрасу."
     sm_nvl "Как только все приготовления были завершены, Сусаноо подошёл к пещере с зеркалом в руках."
     sm_nvl "Своим громким голосом он попросил Аматэрасу выйти наружу, но она его не послушала."
@@ -3758,7 +3780,7 @@ label prologue_day_2:
     "Наконец-то..."
     m "Наконец-то мы окончательно станем официальным клубом спустя ПОЛГОДА!"
     m "А-А-А-А-А, как я же я рада!" with vpunch
-    sm "Тогда началось великое торжество, в котором Уцу{image=accent_call_high_register}{space=-15}ма, богиня радости, громко запела и стала водить хоровод."
+    sm "Тогда началось великое торжество, в котором Уцу{image=accent_call_high_register}{space=-10}ма, богиня радости, громко запела и стала водить хоровод."
     m "Всё-всё, Моника, успокойся, тебе надо уснуть..."
     m "Это ведь всего лишь очередной новенький, который так же покинет нас через несколько дней после вступления, но..."
     sm "Она играла на бамбуковой флейте, а множество мириадов божеств сопровождали её своими музыкальными инструментами."
@@ -3782,7 +3804,7 @@ label prologue_day_2:
         sm_nvl "А сама Уцума ответила ей: \"...потому что среди нас теперь есть божество, чья красота подобна твоей!\""
     sm_nvl "\"Погляди-ка!\""
     sm_nvl "Аматэрасу бросила взор на зеркало в руках Сусаноо и страшно изумилась, заметив в нём богиню сверхъестественной красоты."
-    sm_nvl "Она вышла из пещеры, и перед входом тотчас же была опущена ширма рисовой соломы."
+    sm_nvl "Она вышла из пещеры, и перед входом тотчас же была опущена ширма из рисовой соломы."
     sm_nvl "Богиня увидела улыбающееся лицо Сусаноо и почуствовала тепло, которое никогда не испытывала за всё время."
     sm_nvl "Свет богини рассеял мрак и злых духов, а вместе с ними страхи и горе."
     sm_nvl "И воскликнули тогда божества: \"Да не покинет нас богиня солнца!\""

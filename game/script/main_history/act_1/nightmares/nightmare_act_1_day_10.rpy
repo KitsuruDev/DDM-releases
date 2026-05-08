@@ -272,6 +272,12 @@ label nightmare_act_1_day_10_1:
     play music t6g
     pause 4.7
     show n_cg1b
+
+    python:
+        n_rects1.show()
+        n_rects2.show()
+        n_rects3.show()
+
     hide n_cg1_base
     hide n_cg1_exp1
     pause 1.0
@@ -297,9 +303,13 @@ label nightmare_act_1_day_10_1:
     "Какого хрена?!"
     mc "Значит, это сон!"
     $ style.say_dialogue = style.edited
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     n "Нет, это твоя реальность."
     $ style.say_dialogue = style.normal
     mc "Даже думать не хочу!"
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     mc "{sc=3}Пошла ты нахрен, фальшивка!!!{/sc}"
     call window_close
     call skip_block_on
@@ -372,31 +382,34 @@ label nightmare_act_1_day_10_2:
     $ style.say_dialogue = style.normal
     "Знакомый голос..."
     show natsuki mouth zorder 2 at t11
+    python:
+        n_rects_left.show(zorder=3)
+        n_rects_right.show(zorder=3)
     show n_moving_mouth zorder 3
     $ style.say_dialogue = style.edited
     n "Ты абсолютно всё знаешь."
     hide n_moving_mouth
-    show n_rects_mouth zorder 3
+    $ n_rects_mouth.show(zorder=3)
     $ style.say_dialogue = style.normal
     mc "Опять ты?!"
-    hide n_rects_mouth
+    $ n_rects_mouth.hide()
     show n_moving_mouth zorder 3
     $ style.say_dialogue = style.edited
     n "Это моя фраза."
     hide n_moving_mouth
-    show n_rects_mouth zorder 3
+    $ n_rects_mouth.show(zorder=3)
     $ style.say_dialogue = style.normal
     mc "Нет, не твоя, а Нацуки."
     mc "А ты лишь фальшивый образ в моём мозге, вот и всё!"
-    hide n_rects_mouth
+    $ n_rects_mouth.hide()
     show n_moving_mouth zorder 3
     $ style.say_dialogue = style.edited
     n "Как удобно ты мыслишь."
     hide n_moving_mouth
-    show n_rects_mouth zorder 3
+    $ n_rects_mouth.show(zorder=3)
     $ style.say_dialogue = style.normal
     mc "А что, неправда?"
-    hide n_rects_mouth
+    $ n_rects_mouth.hide()
     show n_moving_mouth zorder 3
     $ style.say_dialogue = style.edited
     n "Да."
@@ -404,64 +417,64 @@ label nightmare_act_1_day_10_2:
     n "У меня есть ЧУВСТВА."
     n "В отличие от тебя..."
     hide n_moving_mouth
-    show n_rects_mouth zorder 3
+    $ n_rects_mouth.show(zorder=3)
     $ style.say_dialogue = style.normal
     mc "Какие, нахрен, чувства?!"
-    hide n_rects_mouth
+    $ n_rects_mouth.hide()
     show n_moving_mouth zorder 3
     $ style.say_dialogue = style.edited
     n "Натуральные."
     n "Как и у тех, кто умеет ощущать."
     n "А ты этого не хочешь понять."
     hide n_moving_mouth
-    show n_rects_mouth zorder 3
+    $ n_rects_mouth.show(zorder=3)
     $ style.say_dialogue = style.normal
     mc "Окей, хорошо, давай попытаемся разобраться во всей этой абсурдной ситуации."
     "Не верю, что говорю это «кошмару» в кошмаре."
-    hide n_rects_mouth
+    $ n_rects_mouth.hide()
     show n_moving_mouth zorder 3
     $ style.say_dialogue = style.edited
     n "О, давай."
     n "А то здесь ОЧЕНЬ скучно."
     hide n_moving_mouth
-    show n_rects_mouth zorder 3
+    $ n_rects_mouth.show(zorder=3)
     $ style.say_dialogue = style.normal
     mc "..."
     mc "Пф-ф-ф..."
-    hide n_rects_mouth
+    $ n_rects_mouth.hide()
     show n_moving_mouth zorder 3
     $ style.say_dialogue = style.edited
     n "Что, волнуешься?"
     hide n_moving_mouth
-    show n_rects_mouth zorder 3
+    $ n_rects_mouth.show(zorder=3)
     $ style.say_dialogue = style.normal
     mc "Твою мать, да!"
     mc "Ты можешь скрыть своё ненормальное лицо?"
-    hide n_rects_mouth
+    $ n_rects_mouth.hide()
     show n_moving_mouth zorder 3
     $ style.say_dialogue = style.edited
     n "НЕНОРМАЛЬНОЕ?!"
     n "ТЫ НЕ ПРИНИМАЕШЬ МЕНЯ?!"
     hide n_moving_mouth
-    show n_rects_mouth zorder 3
+    $ n_rects_mouth.show(zorder=3)
     $ style.say_dialogue = style.normal
     mc "Да, пока ты действуешь мне на нервы!"
-    hide n_rects_mouth
+    $ n_rects_mouth.hide()
     show n_moving_mouth zorder 3
     $ style.say_dialogue = style.edited
     n "Я ПРОСТО ХОЧУ ПОИГРАТЬ!"
     n "ПОИГРАТЬ, МАКС!"
     hide n_moving_mouth
-    show n_rects_mouth zorder 3
+    $ n_rects_mouth.show(zorder=3)
     $ style.say_dialogue = style.normal
     mc "Какие, нафиг, игры..."
-    hide n_rects_mouth
+    $ n_rects_mouth.hide()
     show n_moving_mouth zorder 3
     $ style.say_dialogue = style.edited
     n "МНЕ ОДИНОКО!"
     n "И ты этого совсем не понимаешь!"
     hide n_moving_mouth
-    show n_rects_mouth zorder 3
+    $ n_rects_mouth.show(zorder=3)
     $ style.say_dialogue = style.normal
     mc "Так ты лицо своё скроешь?"
     $ style.say_dialogue = style.edited
@@ -469,7 +482,7 @@ label nightmare_act_1_day_10_2:
     $ style.say_dialogue = style.normal
     mc "Если нет, то я не буду с тобой разговаривать."
     mc "И \"играть\"."
-    hide n_rects_mouth
+    $ n_rects_mouth.hide()
     show n_moving_mouth zorder 3
     $ style.say_dialogue = style.edited
     n "АРГХ, хорошо."
@@ -484,6 +497,9 @@ label nightmare_act_1_day_10_2:
     pause 2.0
     hide darkred
     hide natsuki mouth
+    python:
+        n_rects_left.hide()
+        n_rects_right.hide()
     show natsuki ghost_base at i11
     pause 1.0
 
@@ -629,18 +645,17 @@ label nightmare_act_1_day_10_2:
     $ style.say_dialogue = style.normal
     mc "О-о-о, за что мне это всё..."
     play music natsuki_hard_glitch fadein 6.0
+
+    python:
+        n_rects_left.show()
+        n_rects_right.show()
+        n_rects_mouth.show()
+        renpy.transition(Dissolve(12), layer="master")
+
     show darkred zorder 5:
         alpha 0.0
         easein 20.0 alpha 1.0
-    show n_rects_left zorder 4:
-        yoffset -20 alpha 0
-        easeout 12 alpha 1.0
-    show n_rects_right zorder 4:
-        yoffset -20 alpha 0
-        easeout 12 alpha 1.0
-    show n_rects_mouth zorder 4:
-        yoffset -20 alpha 0
-        easeout 12 alpha 1.0
+    
     $ style.say_dialogue = style.edited
     n "Зачем я на тебя надеялась?"
     n "Зачем я старалась ради тебя?"
@@ -658,7 +673,7 @@ label nightmare_act_1_day_10_2:
     n "Нет, ты ужасен, Макс, именно сейчас."
     $ style.say_dialogue = style.normal
     mc "Ой, да пошла ты в задницу!"
-    show natsuki_ghost_blood zorder 3
+    show natsuki_ghost_blood_animation zorder 4
     $ style.say_dialogue = style.edited
     n "ТЫ УРОД, МАКС!"
     n "ТЫ БРОСИЛ МЕНЯ!"
@@ -678,30 +693,35 @@ label nightmare_act_1_day_10_2:
     n "А МЕНЯ РАЗЪЕДАЕТ ОДИНОЧЕСТВО!!!"
     n "ПОИГРАЙ СО МНОЙ, МАКС!!!"
     n "ПОИГРАЙ!!!"
-    hide n_rects_mouth
+    $ n_rects_mouth.hide()
     n ghost2 "ПОИГРАЙ СО МНОЙ!!!"
     $ style.say_dialogue = style.normal
     mc "Иди ты нахрен со своими играми!!!{w=0.25}{nw}"
     $ quick_menu = False
     play sound "sfx/crack.ogg"
-    hide natsuki_ghost_blood
-    hide n_rects_left
-    hide n_rects_right
+    hide natsuki_ghost_blood_animation
+
+    python:
+        n_rects_left.hide()
+        n_rects_right.hide()
+
     show natsuki ghost3
-    show n_rects_neck_right onlayer front zorder 4:
-        pause 0.2
-        easeout 0.25 zoom 4.5 xoffset 250 yoffset -250
-    show n_rects_neck_left onlayer front zorder 4:
-        pause 0.2
-        easeout 0.25 zoom 4.5 xoffset 250 yoffset -100
+
+    python:
+        n_rects_neck_left.show(zorder=4, transform=neck_left_anim, layer="front")
+        n_rects_neck_right.show(zorder=4, transform=neck_right_anim, layer="front")
+    
     pause 0.2
     hide natsuki
     play sound natsuki_ghost_run
     show natsuki ghost4 onlayer front at i11
     pause 0.25
     hide natsuki onlayer front
-    hide n_rects_neck_right onlayer front
-    hide n_rects_neck_left onlayer front
+
+    python:
+        n_rects_neck_left.hide(layer="front")
+        n_rects_neck_right.hide(layer="front")
+        
     show screen tear_screen(8, offtimeMult=1, ontimeMult=12)
     window hide(None)
     stop music

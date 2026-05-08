@@ -592,7 +592,7 @@ label act_1_day_7:
     scene white
     pause 0.1
     scene black
-    show particle_star
+    $ particle_star.show(transform=particle_star_fadeout)
     with dissolve
 
     call window_open
@@ -611,7 +611,7 @@ label act_1_day_7:
     m "Мне интересно, как давно ты влюбился в меня?"
     mc "Вопрос хороший."
     mc "У меня нет ответа."
-    mc "Вчера пришёл к этому чувству, когда прокучивал всё связанное с клубом в голове."
+    mc "Вчера пришёл к этому чувству, когда прокручивал всё связанное с клубом в голове."
     m "Вот я сразу увидела в тебе что-то особенное."
     m "Ещё тогда, в парке..."
     mc "А, когда я тебя чуть не сбил..."
@@ -674,7 +674,7 @@ label act_1_day_7:
     m "Возможно, с его помощью получится и влюблённость скинуть."
     mc "Кстати, вариант..."
     m "Пойдём обратно в твой дом?"
-    m "Время уже где около 7-ми часов."
+    m "Время уже где-то около 7-ми часов."
     mc "Ну пошли тогда."
     m "А, и ещё, Макс."
     mc "Что такое?"
@@ -792,8 +792,12 @@ label act_1_day_7:
     "Да, каждый день работает и что-то делает..."
     "...но не вечно же носить эту рубашку с брюками?"
     "..."
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     "А вот и мой любимый светло-пурпурно-розовый фартук..."
     "Придётся его нести в руках."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     "Ладно, пора идти к Юри."
     call window_close
 
@@ -1004,10 +1008,14 @@ label act_1_day_7:
     mc "А вообще давай где-нибудь спрячемся и подслушаем их разговор."
     mc "Шли бы они ко мне, то здесь бы не проходили."
     show monika om
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     m "И куда?"
     show monika cm
     mc "Подожди, звук на телефоне вырублю..."
     show monika om
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     m "Давай, только быстро."
     show monika cm e1c
     call skip_block_on
@@ -1145,11 +1153,15 @@ label act_1_day_7:
     show monika cm
     mc "Фу..."
     show monika lsur om oe
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     m "У меня душа два раза в пятки ушла!"
     show monika cm
     mc "И не говори..."
     show monika ce
     play phone_sound new_message_vibration
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     pause 1.0
     show monika curi md oe
     mc "Да что такое?!"
@@ -2093,7 +2105,7 @@ label act_1_day_7:
     "Итак, прошёл где-то час."
     "Яблоки уже пережили шесть кругов ада, за что были безжалостно растёрты в пюре."
     "Теперь они мучаются на седьмом круге в виде субстанции, щедро засыпанной шафраном, вместе с вышвырнутой на произвол судьбы одинокой палочкой корицы."
-    "Заодно к ним в соседних «котлах» приставили мученников в виде абрикосов и земляники."
+    "Заодно к ним в соседних «котлах» приставили мученников в виде абрикосов и клубники."
     "Юри установили в качестве надзирателя за кастрюлями: ей нужно периодически мешать эти страдающие фрукты и снимать с них пенку."
     "А что, если это их предсмертные слюни?..."
     mc "Тьфу!" with vpunch
@@ -3256,7 +3268,11 @@ label act_1_day_7:
 
     call window_open
     scene bg bedroom with wipeleft_scene
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     "Так, ещё одна памятная заметка..."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     window hide
 
     python in phone.calendar:

@@ -169,7 +169,12 @@ label act_1_day_14:
     scene bg bedroom at mc_bed
     with dissolve_scene_full
     call autosave
+    mc "А-а-а..."
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     mc "Ещё лоб себе рассёк, твою ж ты..."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     play phone_sound new_message_mc
     pause 1.0
     call skip_block_on
@@ -343,8 +348,12 @@ label act_1_day_14:
     mc "Не человеческое тело, а дурацкий набор органов..."
     mc "..."
     mc "...твою мать."
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     mc "Не...{w}не-не-не..."
     mc "Надо избавляться от Моникаммм."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     mc "Иначе эта тварь мне всю жизнь искалечит своим тупым взглядом на жизнь."
     play phone_sound new_message_mc
     pause 1.0
@@ -514,7 +523,7 @@ label act_1_day_14:
     n "Папа приехал туда вместе со своими напарниками."
     show natsuki ldown rhip
     n "Местный патруль уже ловил сумасшедшего, а папа принялся помогать пострадавшим."
-    n "Не знаю, насколько всё было плохо, но тогда вызывали эти 17 скорых."
+    n "Не знаю, насколько всё было плохо, но тогда вызвали эти 17 скорых."
     show natsuki flus cm oe
     n "А ещё...{w}несколько людей умерло, когда папа пытался им помочь..."
     show natsuki md
@@ -711,7 +720,7 @@ label act_1_day_14:
     mc "Мало ли какой мог быть подвох: от развалившегося фундамента до отсутствия защиты от землетрясений."
     mc "Но специалисты сказали, что всё отлично, даже есть уровень сейсмоустойчивости «та{image=accent_low_register}{space=-15}йшин»."
     mc "Самый минимальный, но вполне обычный для маленьких домов."
-    mc "В нём всего лишь требуется, чтобы толщина балок и прочих элементов конструкции была минимальной для выдерживания землестрясения."
+    mc "В нём всего лишь требуется, чтобы толщина балок и прочих элементов конструкции была минимальной для выдерживания землетрясения."
     mc "Короче, моему отцу всё равно пришлось немного отремонтировать дом в некоторых местах, и всё -- можно было заселяться."
     show natsuki om
     n "И когда вы его приобрели?"
@@ -801,7 +810,7 @@ label act_1_day_14:
     show layer master:
         align (0.5, 0.5) anchor (0.7, 0.55) zoom 1.7
     with wipeleft_scene
-    "Значит, нам до Коба{image=accent_low_register}{space=-15}ри ехать: всего 4 станции..."
+    "Значит, нам до Коба{image=accent_low_register}{space=-15}ри ехать всего 4 станции..."
     "Не так далеко, как я думал."
     show natsuki oe brow
     mc "{size=19}Тут довольно пусто, на удивление...{/size}"
@@ -867,7 +876,7 @@ label act_1_day_14:
     show natsuki md
     mc "{size=19}Да, ищу его каждый день, блин.{/size}"
     mc "{size=19}Уже заколебался.{/size}"
-    mc "{size=19}Ника не помню, времени прошло хоть и не супер много, но достаточно, чтобы «потеряться».{/size}"
+    mc "{size=19}Ник не помню, времени прошло хоть и не супер много, но достаточно, чтобы «потеряться».{/size}"
     mc "{size=19}Такое ощущение, что я трачу время впустую.{/size}"
     show natsuki om
     n "{size=19}Может, всё-таки наскребём денег на «живого» психолога?{/size}"
@@ -1060,8 +1069,12 @@ label act_1_day_14:
     "В мобильнике порыться, что ли..."
     "...или кому-то написать?"
     "Кстати, да!"
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     "Надо спросить у Моники, как там она и как у неё родители."
     "Всё-таки...{w}нужно же мне хоть какие-то шаги делать, а?"
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     "Иначе у нас не отношения, а какая-то откровенная дрянь."
     call skip_block_on
 
@@ -1215,8 +1228,12 @@ label act_1_day_14:
     pause 0.25
     y "Хм..."
     y "Вроде бы я везде прибралась..."
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     "Как хорошо, что наш дом такой компактный."
     "А если вести себя аккуратно и опрятно, то генеральную уборку можно проводить раз в год..."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     pause 0.25
     play phone_sound new_message_yuri
     pause 1.0
@@ -1440,7 +1457,7 @@ label act_1_day_14:
     show kamuko anno om oe
     kam "А могли бы просто не акцентировать своё внимание и не вести себя, как дети!"
     show kamuko happ om oe ldown rdown
-    kam "Вот я, например, если вижу что-то спойлерное, то выкручиваю свою силу волю на максимум, перестаю их читать и стараюсь переключить своё внимание на что-то другое!"
+    kam "Вот я, например, если вижу что-то спойлерное, то выкручиваю свою силу волю на максимум, перестаю это читать и стараюсь переключить своё внимание на что-то другое!"
     show kamuko ce
     kam "А если даже и получаю спойлер, то он нисколько не портит мне впечатление об аниме!"
     show kamuko oe lhiphid rhid
@@ -1622,7 +1639,7 @@ label act_1_day_14:
     kam "Очень даже толковые!"
     show kamuko neut cm oe
     y "Совершенно нет."
-    y "Я читала информацию, в России зимой в среднем -10-20 градусов, а сильные морозы только за северным полярным кругом."
+    y "Я читала информацию, в России зимой в среднем от -10 до -20 градусов, а сильные морозы только за северным полярным кругом."
     show kamuko om
     kam "Всё равно же холодно."
     show kamuko cm
@@ -2359,12 +2376,16 @@ label act_1_day_14:
     show yuri laug cm ce
     show yuri_mom oe
     ym "Любопытная, а ещё такая большая, -- прямо вся в папу."
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     play phone_sound new_message_mc
     show yuri_mom cm
     pause 1.0
     stop music fadeout 3.0
     show yuri neut cm e1d
     mc "Оп, простите, секунду."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     call skip_block_on
 
     phone register "mc_m_chat":
@@ -2700,7 +2721,7 @@ label act_1_day_14:
     mc "Я и не горю желанием светиться на публику."
     mc "Из сверстников меня никто не привлекал и мне никто не симпатизировал."
     show monika_mom om
-    md "Они вовсе не рассматривают тебя?"
+    mm "Они вовсе не рассматривают тебя?"
     show monika_mom cm
     mc "Нет."
     mc "Я мимикрирую с окружением."
@@ -3982,8 +4003,12 @@ label act_1_day_14:
     mc "{sc=2.0}Поиск-поиск-поиск-поиск...{/sc}"
     mc "{sc=2.0}......{/sc}"
     mc "{sc=2.0}Тихо, соберись, не надо пальцами трястись!{/sc}"
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     mc "{color=#fc7e23}Vo{/color}...{w}{color=#fc7e23}i{/color}...{w}{color=#fc7e23}res{/color}..."
     mc "......"
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     mc "{sc=1.0}Это он...{w}это он...{w}единственный с этим ником...{/sc}"
     call skip_block_on
 
@@ -4031,9 +4056,14 @@ label act_1_day_14:
     show dark
     with dissolve
     mc "{cps=20}{sc=2.0}ОБ КА...{w}а-а-а...{/sc}{/cps}"
+    
     mc "{cps=20}{sc=1.0}...чёртов кошмар...{/sc}{/cps}"
     mc "{cps=20}{sc=0.5}...{/sc}{/cps}"
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     mc "{cps=20}{sc=0.5}...стоп...{w}уведомление о сообщении?...{/sc}{/cps}"
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     mc "{cps=20}{sc=1.0}...кого...{w}разобрало...{w}так поздно...{/sc}{/cps}"
     call skip_block_on
 

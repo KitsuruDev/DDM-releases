@@ -175,16 +175,14 @@ label nightmare_act_1_day_11:
     $ style.say_dialogue = style.normal
     stop music
     play sound "sfx/stab.ogg"
-    show blood_eye zorder 6:
-        pos (750, 320) zoom 2.5
+    $ blood_eye.show(x=750, y=320, zoom=2.5, zorder=6)
     pause 0.5
     stop sound
     hide black
     hide y_glitch_head
-    hide blood_eye
+    $ blood_eye.hide()
 
-    show blood_eye_rare zorder 6:
-        pos (750, 320) zoom 2.0
+    $ blood_eye_rare.show(x=750, y=320, zoom=2.0, zorder=6)
     show yuri pani om ce
     y "Ой!"
     show yuri lup rup
@@ -205,7 +203,7 @@ label nightmare_act_1_day_11:
     show yuri happ om ce -b1b
     y "Всё, вернусь через минутку!"
     show yuri cm
-    hide blood_eye_rare
+    $ blood_eye_rare.hide()
     hide yuri with easeoutleft
     pause 1.0
     play sound closet_open

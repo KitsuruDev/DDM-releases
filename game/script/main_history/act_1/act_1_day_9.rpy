@@ -619,8 +619,12 @@ label act_1_day_9:
 
     call window_open
     scene bg school old_rooftop day
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     mc "Ф-ф-ф..."
     mc "А-а-а..."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     "Свежий воздух и тишина..."
     call skip_block_on
 
@@ -1211,7 +1215,7 @@ label act_1_day_9:
     m "{size=19}А если бы нет?{/size}"
     n "{size=19}Никто бы не умер.{/size}"
     m "{size=19}Понимаешь, у нас и так проблема с людьми, нам нужно подходить к их привлечению очень ответственно.{/size}"
-    m "{size=19}А ты чуть Сайори не подставила, который пришлось судорожно импровизировать.{/size}"
+    m "{size=19}А ты чуть Сайори не подставила, которой пришлось судорожно импровизировать.{/size}"
     n "{size=19}Да какая ты зануда...{/size}"
     s "{size=19}Моника, всё хорошо, успокойся...{/size}"
     m "{size=19}Ух...{/size}"
@@ -1869,7 +1873,7 @@ label act_1_day_9:
     show monika neut om oe ldown
     show kotonoha neut cm oe
     show yuri neut cm e1d
-    m "Больше никаких вопросов, пока мы тут все месте?"
+    m "Больше никаких вопросов, пока мы тут все вместе?"
     show monika cm
     mc "Нет, в принципе..."
     show sayori om
@@ -2063,8 +2067,12 @@ label act_1_day_9:
     scene black with wipeleft_scene
     mc "Пф-ф-ф..."
     s "Что такое?"
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     mc "Устал, уже говорил."
     mc "А ещё домашнее задание ковырять, плюс стих писать..."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     s "Да, дел невпроворот."
     stop noise_1 fadeout 2.0
     call window_close
@@ -2111,8 +2119,12 @@ label act_1_day_9:
     "То это, то то, то пятое, то десятое..."
     "А если ничего из дел нет, то никак не можешь получить удовольствие от отдыха."
     mc "Чёртова жизнь..."
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     "Нафиг ты мне такая нужна?"
     "Самая важная ценность человека, блин..."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     mc "Так, листок и ручка..."
 
     call poem_act_1_day_9

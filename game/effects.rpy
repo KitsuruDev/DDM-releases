@@ -13,7 +13,7 @@ init python:
 
 
 init -1 python in Effects:
-    from store import SpriteManager, Null
+    from store import SpriteManager, Null, Solid, Position, Transform, Dissolve
     import random
     import math
 
@@ -352,7 +352,7 @@ init -1 python in Effects:
 
     ############################## RECT, PARTICLEBURST, BLOOD ##############################
 
-    # Пиксели-помехи (поломанный спрайт Сайори в меню во 2 акте)
+    # Пиксели-помехи (поломанный спрайт Сайори в меню во 2 акте) (НИГДЕ НЕ ИСПОЛЬЗОВАНО)
     class RectStatic(object):
         def __init__(self, theDisplayable, numRects=12, rectWidth = 30, rectHeight = 30):
             self.sm = SpriteManager(update=self.update)
@@ -383,6 +383,7 @@ init -1 python in Effects:
                     self.timers[i] = st + random.random() * 0.4 + 0.1
             return 0
 
+
     # Пиксельные глаза и рот Нацуки
     class RectCluster(object):
         def __init__(self, theDisplayable, numRects=12, areaWidth=30, areaHeight=30):
@@ -412,8 +413,50 @@ init -1 python in Effects:
                 s.height = random.random() * self.areaHeight / 2
             return 0
 
+    class RectClusterDisplay(object):
+        """
+        Отображение кластера пикселей на экране (в новых версиях SpriteManager не работает в блоке image)
+        """
+
+        def __init__(self, color="#000", numRects=12, areaWidth=30, areaHeight=30, x=640, y=360, width=34, height=34):
+            self.cluster = RectCluster(Solid(color), numRects, areaWidth, areaHeight)
+            self.x = x
+            self.y = y
+            self.width = width
+            self.height = height
+            self.name = f"cluster_{id(self)}"
+
+        def show(self, zorder=0, transform=None, layer=None):
+            at_list = [
+                Position(xpos=self.x, ypos=self.y, xsize=self.width, ysize=self.height)
+            ]
+
+            if transform:
+                if isinstance(transform, list):
+                    at_list.extend(transform)
+                else:
+                    at_list.append(transform)
+            
+            renpy.show(
+                name=self.name, 
+                what=self.cluster.sm,
+                at_list=at_list,
+                zorder=zorder,
+                layer=layer
+            )
+    
+        def hide(self, layer=None):
+            if layer:
+                renpy.hide(self.name, layer=layer)
+            else:
+                renpy.hide(self.name)
+
+
     class ParticleBurst(object):
-        def __init__(self, theDisplayable, pos_x = 640, pos_y = 360, explodeTime=0, numParticles=20, particleTime = 0.500, particleXSpeed = 3, particleYSpeed = 5):
+        def __init__(
+            self, theDisplayable, pos_x = 640, pos_y = 360,
+            explodeTime=0, numParticles=20, particleTime = 0.500, particleXSpeed = 3, particleYSpeed = 5
+        ):
             self.sm = SpriteManager(update=self.update)
 
             self.stars = [ ]
@@ -454,6 +497,49 @@ init -1 python in Effects:
                 sindex += 1
             return 0
 
+    class ParticleBurstDisplay(object):
+        """
+        Отображение взрыва частиц с затуханием на экране (в новых версиях SpriteManager не работает в блоке image)
+        """
+
+        def __init__(
+            self, image_path, x=640, y=360,
+            explodeTime=0, numParticles=40, particleTime=2.0, particleXSpeed=15, particleYSpeed=15,
+            fade_duration=1.5
+        ):
+            self.particle_burst = ParticleBurst(
+                image_path, 
+                pos_x=x, 
+                pos_y=y, 
+                explodeTime=explodeTime, 
+                numParticles=numParticles, 
+                particleTime=particleTime, 
+                particleXSpeed=particleXSpeed, 
+                particleYSpeed=particleYSpeed
+            )
+            self.x = x
+            self.y = y
+            self.fade_duration = fade_duration
+            self.name = f"particle_burst_{id(self)}"
+
+        def show(self, transform=None):
+            at_list = [
+                Position(xpos=self.x, ypos=self.y)
+            ]
+
+            if transform:
+                if isinstance(transform, list):
+                    at_list.extend(transform)
+                else:
+                    at_list.append(transform)
+            
+            renpy.show(
+                name=self.name, 
+                what=self.particle_burst.sm,
+                at_list=at_list
+            )
+
+
     class Blood(object):
         def __init__(self, theDisplayable, density=120.0, particleTime=1.0, dripChance=0.05, dripSpeedX=0.0, dripSpeedY=120.0, dripTime=180.0, burstSize=100, burstSpeedX=200.0, burstSpeedY=400.0, numSquirts=4, squirtPower=400, squirtTime=0.25):
             self.sm = SpriteManager(update=self.update)
@@ -473,8 +559,10 @@ init -1 python in Effects:
             self.lastUpdate = 0
             self.delta = 0.0
 
-            for i in range(burstSize): self.add_burst(theDisplayable, 0)
-            for i in range(numSquirts): self.add_squirt(squirtPower, squirtTime)
+            for i in range(burstSize):
+                self.add_burst(theDisplayable, 0)
+            for i in range(numSquirts):
+                self.add_squirt(squirtPower, squirtTime)
 
         # This function makes a single squirt of blood that follows an arc.
         def add_squirt(self, squirtPower, squirtTime):
@@ -530,6 +618,47 @@ init -1 python in Effects:
                 pindex += 1
             return 0
 
+    class BloodDisplay(object):
+        """
+        Отображение эффектов крови на экране (в новых версиях SpriteManager не работает в блоке image)
+        """
+
+        def __init__(
+            self, image_path, dripChance=0.05, numSquirts=4, burstSize=100, width=1, height=1
+        ):
+            self.blood = Blood(
+                theDisplayable=image_path,
+                dripChance=dripChance,
+                numSquirts=numSquirts,
+                burstSize=burstSize
+            )
+            
+            self.width = width
+            self.height = height
+            self.name = f"blood_{id(self)}"
+
+        def show(self, x=640, y=360, zoom=1.0, zorder=0, transform=None):
+            at_list = [
+                Position(xpos=x, ypos=y, xsize=self.width, ysize=self.height, zoom=zoom)
+            ]
+            
+            if transform:
+                if isinstance(transform, list):
+                    at_list.extend(transform)
+                else:
+                    at_list.append(transform)
+            
+            renpy.show(
+                name=self.name,
+                what=self.blood.sm,
+                at_list=at_list,
+                zorder=zorder
+            )
+        
+        def hide(self):
+            renpy.hide(self.name)
+
+
 ## invert_screen
 # Syntax
 #   length - This declares how long the effect plays for.
@@ -571,10 +700,15 @@ image m_rectstatic3 = RectStatic(im.FactorScale(im.Crop("gui/menu_art_s.png", (1
 
 
 # Звёзды при столкновениях
-image particle_star:
+default particle_star = ParticleBurstDisplay(
+    "gui/menu_particle.png",
+    x=325, y=150,
+    numParticles=40, particleTime=2.0, particleXSpeed=15, particleYSpeed=15,
+    fade_duration=1.5
+)
+transform particle_star_fadeout:
     alpha 1.0
-    ParticleBurst("gui/menu_particle.png", pos_x=640, pos_y=275, explodeTime=0, numParticles=40, particleTime=2.0, particleXSpeed=15, particleYSpeed=15).sm
-    easeout 1.5 alpha 0
+    easeout 1.5 alpha 0.0
 
 
 # This image transform adds a blood drop that gets longer and thinner over time.
@@ -597,26 +731,15 @@ image particle_blood:
     choice:
         linear 0.55 zoom 0
 
-# This image transform adds a blood drop that squirts and drops for three minutes.
-image blood:
-    size (1, 1)
-    truecenter
-    Blood("particle_blood").sm
-
-# This image transform adds a blood drop that doesn't squirts, and increases the chance of dropping.
-image blood_eye:
-    size (1, 1)
-    truecenter
-    Blood("particle_blood", dripChance=0.5, numSquirts=0).sm
-
-image blood_eye_rare:
-    size (1, 1)
-    truecenter
-    Blood("particle_blood", dripChance=0.005, numSquirts=0, burstSize=0).sm
-
+default blood = BloodDisplay("particle_blood", dripChance=0.05)
+default blood_eye = BloodDisplay("particle_blood", dripChance=0.5, numSquirts=0)
+default blood_eye_rare = BloodDisplay("particle_blood", dripChance=0.005, numSquirts=0, burstSize=0)
 
 ## Veins
 image veins:
-    AnimatedMask("images/bg/veinmask.png", "images/bg/veinmask.png", "images/bg/veinmaskb.png", 0.15, 16, moving=False, speed=10.0, frequency=0.25, amount=0.1)
+    AnimatedMask(
+        "images/bg/veinmask.png", "images/bg/veinmask.png", "images/bg/veinmaskb.png", 0.15, 16, 
+        moving=False, speed=10.0, frequency=0.25, amount=0.1
+    )
     subpixel True
     xanchor 0.05 zoom 1.10

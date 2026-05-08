@@ -1309,11 +1309,15 @@ label act_1_day_12:
     s "Что-то очень важное?"
     show emi neut cm oe
     show sayori cm
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     mc "Не знаю, сейчас выясню."
     show emi om
     show kamuko neut cm oe
     e "Мы здесь подождём."
     show emi cm
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     mc "Угу."
     call skip_block_on
     call window_close
@@ -2688,8 +2692,12 @@ label act_1_day_12:
     "..."
     "Явно пятая."
     mc "Может, есть всё-таки какая-то деталь, а..."
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     "Неужели у меня в голове не отложился его ник?"
     "Столько с ним общался, блин...{w}и толку?"
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     mc "Ну почему в самые ответственные моменты вы все испаряетесь вникуда..."
     call window_close
     call skip_block_on
@@ -2757,7 +2765,7 @@ label act_1_day_12:
     show sayori cm
     mc "Первое: если ты встаёшь ночью, то ложись на левую половину кровати."
     show sayori neut cm oe -b1d
-    mc "Второе: есть вероятность, что я начную дрыгаться."
+    mc "Второе: есть вероятность, что я начну дрыгаться."
     mc "В эти моменты я могу по тебе «случайно» заехать, поэтому не бойся давать мне «отпор», но в меру."
     show sayori happ cm oe
     mc "Третье: встаём пораньше, чтобы заняться твоей пробежкой, про которую ты только что мне говорила."

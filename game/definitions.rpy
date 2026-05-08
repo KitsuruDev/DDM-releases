@@ -1112,6 +1112,14 @@ image accent_high_register:
 
 ############### Подсказки ("at hint_position") ###############
 
+image warning_interactive_mouse:
+    "mod_assets/elements/mod_gui/hints/warning_interactive_mouse.png"
+    size (240, 131)
+
+image warning_interactive_keyboard:
+    "mod_assets/elements/mod_gui/hints/warning_interactive_keyboard.png"
+    size (240, 131)
+
 image hint_phone_typing:
     "mod_assets/elements/mod_gui/hints/phone_typing.png"
     size (240, 131)
@@ -1252,8 +1260,7 @@ image monika g1:
         0.05
         repeat
 
-
-# Моника разваливается на куски
+# Моника разваливается на куски - спрайт
 image monika g2:
     block:
         choice:
@@ -1273,6 +1280,24 @@ image monika g2:
             pause 0.2
     repeat
 
+# Моника разваливается на куски - CG-сцена 3 акта
+image monika g3:
+    "images/cg/monika/monika_glitch3.png"
+    0.15
+    "images/cg/monika/monika_glitch4.png"
+    0.15
+    "images/cg/monika/monika_glitch3.png"
+    0.15
+    "images/cg/monika/monika_glitch4.png"
+    1.00
+    "images/cg/monika/monika_glitch3.png"
+    0.15
+    "images/cg/monika/monika_glitch4.png"
+    0.15
+    "images/cg/monika/monika_glitch3.png"
+    0.15
+    "images/cg/monika/monika_glitch4.png"
+
 
 ############# Сайори #############
 
@@ -1287,10 +1312,13 @@ image sayori glitch:
 
 ############# Нацуки #############
 
-# Вытекание крови из глазниц (параметры вынесены в вызов изображения, т.к. некорректно работает с ними внутри)
+# Вытекание крови из глазниц
 image natsuki_ghost_blood_animation:
-    "#00000000"
-    "natsuki/ghost_blood.png" with ImageDissolve("images/menu/wipedown.png", 100.0, ramplen=4)
+    "natsuki/ghost_blood.png"
+    subpixel True
+    pos (575, 252) anchor(0.0, 0.0) zoom 0.8
+    alpha 0.0 blur 2.0 crop (0, 0, 1.0, 0.0)
+    ease 5.0 alpha 1.0 blur 0.0 crop (0, 0, 1.0, 1.0)
 
 image natsuki ghost_base = "natsuki/ghost1.png" # Белое лицо
 image natsuki ghost2 = "natsuki/ghost2.png"     # Улыбка в "половину" лица
@@ -1299,45 +1327,26 @@ image natsuki ghost4:                           # Бег
     "natsuki ghost3"
     natsuki_ghost_run_animation
 
-### yoffset -20 при доп. параметрах отображения в сюжете (например, alpha 0 -> alpha 1.0) ###
+default n_rects_left = RectClusterDisplay("#000", 4, 15, 5, 575, 265, 20, 25)
+default n_rects_right = RectClusterDisplay("#000", 4, 15, 5, 647, 259, 20, 25)
+default n_rects_mouth = RectClusterDisplay("#000", 4, 15, 5, 616, 315, 25, 15)
 
-image n_rects_left:
-    RectCluster(Solid("#000"), 4, 15, 5).sm
-    pos (575, 265)
-    size (20, 25)
+# использовать c: pause 0.2 -> easeout 0.25 zoom 4.5 xoffset 250 yoffset -250
+default n_rects_neck_left = RectClusterDisplay("#000", 4, 15, 5, 740, 376, 25, 20)
+default n_rects_neck_right = RectClusterDisplay("#000", 4, 15, 5, 735, 310, 25, 20)
 
-image n_rects_right:
-    RectCluster(Solid("#000"), 4, 15, 5).sm
-    pos (647, 259)
-    size (20, 25)
+transform neck_left_anim:
+    pause 0.2
+    easeout 0.25 zoom 4.5 xoffset 250 yoffset -100
 
-image n_rects_mouth:
-    RectCluster(Solid("#000"), 4, 15, 5).sm
-    pos (616, 315)
-    size (25, 15)
-
-###
-
-### использовать c: pause 0.2 -> easeout 0.25 zoom 4.5 xoffset 250 yoffset -250 ###
-
-image n_rects_neck_left:
-    RectCluster(Solid("#000"), 4, 15, 5).sm
-    pos (740, 376)
-    size (25, 20)
-
-image n_rects_neck_right:
-    RectCluster(Solid("#000"), 4, 15, 5).sm
-    pos (735, 310)
-    size (25, 20)
+transform neck_right_anim:
+    pause 0.2
+    easeout 0.25 zoom 4.5 xoffset 250 yoffset -250
 
 ###
-
 
 # Лицо + живой рот
-image natsuki mouth = Composite((960, 960), (0, 0), "natsuki/1l.png", (0, 0), "natsuki/1r.png", (0, 0), "natsuki/0.png", (390, 340), "n_rect", (480, 334), "n_rect")
-image n_rect:
-    RectCluster(Solid("#000"), 4, 15, 5).sm
-    size (20, 25)
+image natsuki mouth = Composite((960, 960), (0, 0), "natsuki/1l.png", (0, 0), "natsuki/1r.png", (0, 0), "natsuki/0.png")
 
 image n_moving_mouth:
     "images/natsuki/mouth.png"
@@ -1506,6 +1515,7 @@ default pov_key = "mc" # для диалоговых окон
 
 default persistent.full_playthrough = False
 default persistent.censorship = False
+default persistent.warning_interactive = True # включен изначально для тех, кто не будет сидеть в настройках
 default persistent.seen_based_menu = False
 default random_menu = 0
 default persistent.random_menu_past = 0
@@ -1519,7 +1529,6 @@ default persistent.first_phone_call = False
 default persistent.first_phone_menu_action = False
 default persistent.first_phone_typing = False
 default persistent.first_phone_menu_apps = False
-default persistent.first_phone_call = False
 
 default sprite_main_menu_set = False
 default episode = _("Пролог. День 1")

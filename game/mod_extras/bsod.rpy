@@ -199,7 +199,7 @@ screen bsod(bsodCode="DDLC_ESCAPE_PLAN_FAILED", bsodFile="libGLESv2.dll"):
 
 style bsod_win7_text is gui_text
 style bsod_win7_text:
-    font "C:/Windows/Fonts/lucon.ttf"
+    font "mod_assets/font/Lucida-Console.ttf"
     antialias False
     size 13
     line_leading 15
@@ -209,7 +209,7 @@ style bsod_win7_text:
 
 style bsod_win8_text is gui_text
 style bsod_win8_text:
-    font "C:/Windows/Fonts/segoeuil.ttf"
+    font "mod_assets/font/Segoe-UI-light.ttf"
     size 25
     line_spacing 5
     xsize 600
@@ -226,7 +226,7 @@ style bsod_win8_sub_text is bsod_win8_text:
 
 style bsod_win10_text is bsod_win8_text
 style bsod_win10_text:
-    font "C:/Windows/Fonts/segoeuil.ttf"
+    font "mod_assets/font/Segoe-UI-light.ttf"
     size 24
     line_leading 3
     line_spacing 0

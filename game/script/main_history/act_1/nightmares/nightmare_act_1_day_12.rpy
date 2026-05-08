@@ -2,7 +2,6 @@ define audio.t6s1 = "<from 84.271 loop 43.572>bgm/6s.ogg"
 
 default yuri_ghost_death = 0
 
-
 # Глаза дракона
 image yuri dragon:
     parallel:
@@ -58,7 +57,6 @@ image yuri glitch2:
     "yuri/0b.png"
     pause 0.05
     repeat
-
 
 # Живые глаза и анимации дыхания и смеха под My Confession - Yuri ver.
 layeredimage yuri_realistic_eyes:
@@ -293,7 +291,6 @@ image yuri_realistic_pupils:
         pause 8.899
         repeat
 
-
 transform yuri_realistic_eyes_move:
     pause 1.688
     block:
@@ -343,7 +340,6 @@ transform yuri_realistic_eyes_move:
     pause 9.193
     repeat
 
-
 # Юри, пронзённая ножом в сердце
 layeredimage yuri_stab:
 
@@ -385,9 +381,6 @@ image yuri stab_6_eyes:
         easeout 1.0 yoffset -15
         linear 10 yoffset -15
 
-
-image natsuki ghost2 run = Composite((960, 960), (0, 0), "natsuki/ghost2.png", (390, 340), "n_rect", (480, 334), "n_rect")
-
 transform natsuki_ghost_attack_dodge:
     parallel:
         easeout 1.0 zoom 3.0 yoffset 1500
@@ -398,6 +391,15 @@ transform natsuki_ghost_attack_dodge:
     parallel:
         ease 0.025 xoffset -20
         ease 0.025 xoffset 20
+        repeat
+
+transform natsuki_ghost_attack_dodge_eyes:
+    yoffset -25
+    parallel:
+        easeout 1.0 zoom 3.0
+    parallel:
+        ease 0.2 xoffset 250
+        ease 0.2 xoffset -250
         repeat
 
 
@@ -677,7 +679,14 @@ label nightmare_act_1_day_12:
     "Я даже говорить не могу!"
     "Хотя...{w}да, сейчас самое время!"
     "Я покажу тебе своё «признание»!"
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
+    "Прямо в твой грёбаный глаз!"
     "Только...{w}чёртов паралич...{w}благо она обезумела, из-за чего ослабила контроль надо мной..."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
+    "Поэтому надо сопротивляться!"
+    "Я ещё могу поднять свою левую руку!"
 
     jump nightmare_act_1_day_12_qte_yuri_ghost
 
@@ -705,12 +714,11 @@ label nightmare_act_1_day_12_after_qte_yuri_ghost:
     show yuri_stab at eyes:
         7.8
         easeout_cubic 0.5 yoffset 600
-    show blood:
-        pos (530, 585)
+    $ blood.show(x=530, y=585)
     with dissolve_cg
     pause 7.55
     hide veins onlayer front
-    hide blood
+    $ blood.hide()
 
     scene black
     play sound fall
@@ -779,9 +787,12 @@ label nightmare_act_1_day_12_after_yuri_ghost_death:
     show darkred zorder 3:
         alpha 0.5
     show natsuki ghost_base at i11
-    show n_rects_left zorder 2
-    show n_rects_right zorder 2
-    show n_rects_mouth zorder 2
+
+    python:
+        n_rects_left.show(zorder=2)
+        n_rects_right.show(zorder=2)
+        n_rects_mouth.show(zorder=2)
+
     with dissolve
 
     $ yuri_ghost_death = 0
@@ -802,7 +813,7 @@ label nightmare_act_1_day_12_after_yuri_ghost_death:
     $ style.say_dialogue = style.normal
     mc "Ты меня слушаешь?!"
     $ style.say_dialogue = style.edited
-    hide n_rects_mouth
+    $ n_rects_mouth.hide()
     n ghost2 "НО ТЫ МЕНЯ НЕ ПЕРЕИГРАЕШЬ!"
     n "Я УБЬЮ ТЕБЯ ЛОВКО И БЫСТРО!"
     play music confrontation_part_4 fadein 1.0
@@ -810,10 +821,16 @@ label nightmare_act_1_day_12_after_yuri_ghost_death:
     mc "Ах ты ж мразь!--{nw}"
     window hide(None)
 
-    hide n_rects_left
-    hide n_rects_right
+    python:
+        n_rects_left.hide()
+        n_rects_right.hide()
 
-    show natsuki ghost2 run at natsuki_ghost_attack_dodge
+    show natsuki ghost2 at natsuki_ghost_attack_dodge
+
+    python:
+        n_rects_left.show(zorder=2, transform=natsuki_ghost_attack_dodge_eyes)
+        n_rects_right.show(zorder=2, transform=natsuki_ghost_attack_dodge_eyes)
+    
     play noise_2 natsuki_ghost_run
     pause 0.25
 
@@ -831,8 +848,9 @@ label nightmare_act_1_day_12_after_qte_natsuki_ghost:
     show darkred zorder 3:
         alpha 0.5
     show natsuki ghost2 at i11
-    show n_rects_left
-    show n_rects_right
+    python:
+        n_rects_left.show()
+        n_rects_right.show()
     show layer master at stress(2.0, 0.5)
     with dissolve
     show pistol_idle zorder 2 with dissolve
@@ -867,7 +885,7 @@ label nightmare_act_1_day_12_after_qte_natsuki_ghost:
     stop music fadeout 6.0
     show layer master
     with dissolve
-    show n_rects_mouth
+    $ n_rects_mouth.show(zorder=2)
     n ghost_base "Ну и что же такому уроду, как ты, после всего случившегося вдруг захотелось узнать?"
     $ style.say_dialogue = style.normal
     mc "Много чего!"
@@ -1096,21 +1114,25 @@ label nightmare_act_1_day_12_after_qte_natsuki_ghost:
     mc "И тем не менее ты упорно пытаешься поставить меня перед фактом разрушения мира мной же."
     mc "И убийства Юри, которую ты так ненавидишь."
     mc "У тебя что, есть мизерная надежда, что всё поменяется в светлую сторону?..."
-    hide n_rects_mouth
+    $ n_rects_mouth.hide()
     $ style.say_dialogue = style.edited
     n ghost2 "Нет, просто хочу, чтобы тебя совесть сожрала."
     n "Так я получу ещё больше удовольствия."
     $ style.say_dialogue = style.normal
     mc "Ну ты и мразь..."
     mc "Я думал, ты будешь лучше, но ты сгнила до основания."
-    show n_rects_mouth
+    $ n_rects_mouth.show()
     $ style.say_dialogue = style.edited
     n ghost_base "..."
     $ style.say_dialogue = style.normal
     mc "Какое счастье, что я здесь не живу."
     mc "И какое счастье, что я вас больше никогда не увижу."
+    if persistent.warning_interactive:
+        show warning_interactive_mouse at hint_position onlayer front
     mc "Не я виноват во всём этом."
     mc "Вы сами всё без меня разрушили."
+    if persistent.warning_interactive:
+        hide warning_interactive_mouse onlayer front
     mc "Потому что надо уметь себя контролировать."
     if persistent.censorship:
         mc "А вы нихрена не умеете это делать, чёртовы инфантилы."
@@ -1118,8 +1140,7 @@ label nightmare_act_1_day_12_after_qte_natsuki_ghost:
         mc "А вы нихера не умеете это делать, ёбаные инфантилы."
     mc "Поэтому пожрите сполна плоды своей тупости."
     stop music fadeout 2.0
-    show natsuki_ghost_blood_animation zorder 2:
-        pos (574, 252) zoom 0.80
+    show natsuki_ghost_blood_animation zorder 2
     mc "Сайонара, ничтожество."
     call window_close
 
