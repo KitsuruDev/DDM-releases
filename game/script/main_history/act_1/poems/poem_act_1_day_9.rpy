@@ -45,26 +45,26 @@ label poem_act_1_day_9:
 
     play music t4 fadein 3.0
 
-    call screen dialog("Наша задача осложняется тем, что\nни меня, ни Монику не смутило отсутствие\nпримера для написания.", ok_action=Return())
-    call screen dialog("А хотя зачем он...", ok_action=Return())
-    call screen dialog("«Абстракционизм» Моники у меня\nотносительно запомнился.", ok_action=Return())
-    call screen dialog("Так что поехали.", ok_action=Return())
+    call screen dialog(_("Наша задача осложняется тем, что\nни меня, ни Монику не смутило отсутствие\nпримера для написания."), ok_action=Return())
+    call screen dialog(_("А хотя зачем он..."), ok_action=Return())
+    call screen dialog(_("«Абстракционизм» Моники у меня\nотносительно запомнился."), ok_action=Return())
+    call screen dialog(_("Так что поехали."), ok_action=Return())
     pause 5.0
-    call screen dialog("Ну и куда?", ok_action=Return())
-    call screen dialog("О чём писать?", ok_action=Return())
-    call screen dialog("Моника-Моника-Моника...", ok_action=Return())
-    call screen dialog("Глаза, бант, волосы...", ok_action=Return())
-    call screen dialog("Что ни мысль, то вечно её образ.", ok_action=Return())
-    call screen dialog("Особенно глаза в голове всплывают.", ok_action=Return())
-    call screen dialog("Может, тогда взять их за основу?", ok_action=Return())
-    call screen dialog("М-м-м, ладно, попробуем...", ok_action=Return())
+    call screen dialog(_("Ну и куда?"), ok_action=Return())
+    call screen dialog(_("О чём писать?"), ok_action=Return())
+    call screen dialog(_("Моника-Моника-Моника..."), ok_action=Return())
+    call screen dialog(_("Глаза, бант, волосы..."), ok_action=Return())
+    call screen dialog(_("Что ни мысль, то вечно её образ."), ok_action=Return())
+    call screen dialog(_("Особенно глаза в голове всплывают."), ok_action=Return())
+    call screen dialog(_("Может, тогда взять их за основу?"), ok_action=Return())
+    call screen dialog(_("М-м-м, ладно, попробуем..."), ok_action=Return())
     pause 1.0
     call screen poem_game_solo(*poem_words_a1_d9[1])
     pause 3.0
     call screen poem_game_solo(*poem_words_a1_d9[2])
     pause 1.5
-    call screen dialog("Отлично, есть начало!", ok_action=Return())
-    call screen dialog("С трудом и не сразу, но всё-таки...", ok_action=Return())
+    call screen dialog(_("Отлично, есть начало!"), ok_action=Return())
+    call screen dialog(_("С трудом и не сразу, но всё-таки..."), ok_action=Return())
     pause 0.5
     call screen poem_game_solo(*poem_words_a1_d9[3])
     pause 1.5
@@ -102,7 +102,7 @@ label poem_act_1_day_9:
     pause 1.5
     call screen poem_game_solo(*poem_words_a1_d9[20])
     pause 1.5
-    call screen dialog("Ага, смотрим...", ok_action=Return())
+    call screen dialog(_("Ага, смотрим..."), ok_action=Return())
     pause 0.5
 
     call skip_block_off

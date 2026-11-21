@@ -44,11 +44,11 @@ label poem_act_1_day_2:
 
     play music t4 fadein 3.0
 
-    call screen dialog("Что бы она сама написала?", ok_action=Return())
-    call screen dialog("...", ok_action=Return())
-    call screen dialog("Или мне тоже написать про своё утро?", ok_action=Return())
-    call screen dialog("Ну...", ok_action=Return())
-    call screen dialog("Хорошо, да будет так.", ok_action=Return())
+    call screen dialog(_("Что бы она сама написала?"), ok_action=Return())
+    call screen dialog(_("..."), ok_action=Return())
+    call screen dialog(_("Или мне тоже написать про своё утро?"), ok_action=Return())
+    call screen dialog(_("Ну..."), ok_action=Return())
+    call screen dialog(_("Хорошо, да будет так."), ok_action=Return())
     pause 0.5
     call screen poem_game_solo(*poem_words_a1_d2[1])
     pause 1.5
@@ -76,8 +76,8 @@ label poem_act_1_day_2:
     pause 1.5
     call screen poem_game_solo(*poem_words_a1_d2[13])
     pause 1.5
-    call screen dialog("Куда-то меня понесло...", ok_action=Return())
-    call screen dialog("Это вообще не позитивный стих.", ok_action=Return())
+    call screen dialog(_("Куда-то меня понесло..."), ok_action=Return())
+    call screen dialog(_("Это вообще не позитивный стих."), ok_action=Return())
     pause 0.5
     call screen poem_game_solo(*poem_words_a1_d2[14])
     pause 1.5
@@ -93,8 +93,8 @@ label poem_act_1_day_2:
     pause 1.5
     call screen poem_game_solo(*poem_words_a1_d2[20])
     pause 1.5
-    call screen dialog("Готово.", ok_action=Return())
-    call screen dialog("Итак, кульминационный момент...", ok_action=Return())
+    call screen dialog(_("Готово."), ok_action=Return())
+    call screen dialog(_("Итак, кульминационный момент..."), ok_action=Return())
     pause 0.5
 
     call skip_block_off

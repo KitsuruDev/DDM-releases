@@ -48,10 +48,10 @@ label poem_act_1_day_13:
 
     play music t4 fadein 3.0
 
-    call screen dialog("...", ok_action=Return())
-    call screen dialog("...ну типа...", ok_action=Return())
-    call screen dialog("...хм...", ok_action=Return())
-    call screen dialog("Будь, что будет.", ok_action=Return())
+    call screen dialog(_("..."), ok_action=Return())
+    call screen dialog(_("...ну типа..."), ok_action=Return())
+    call screen dialog(_("...хм..."), ok_action=Return())
+    call screen dialog(_("Будь, что будет."), ok_action=Return())
     pause 0.5
     call screen poem_game_solo(*poem_words_a1_d13[1])
     pause 1.5

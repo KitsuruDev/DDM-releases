@@ -44,11 +44,11 @@ label poem_act_1_day_4:
 
     play music t4 fadein 3.0
 
-    call screen dialog("Нацуки-Нацуки-Нацуки...", ok_action=Return())
-    call screen dialog("Что-то простое, да?", ok_action=Return())
-    call screen dialog("Хм...", ok_action=Return())
-    call screen dialog("Запах апельсина до сих пор идёт в нос.", ok_action=Return())
-    call screen dialog("Стих про апельсин?", ok_action=Return())
+    call screen dialog(_("Нацуки-Нацуки-Нацуки..."), ok_action=Return())
+    call screen dialog(_("Что-то простое, да?"), ok_action=Return())
+    call screen dialog(_("Хм..."), ok_action=Return())
+    call screen dialog(_("Запах апельсина до сих пор идёт в нос."), ok_action=Return())
+    call screen dialog(_("Стих про апельсин?"), ok_action=Return())
     pause 0.5
     call screen poem_game_solo(*poem_words_a1_d4[1])
     pause 1.5
@@ -90,9 +90,9 @@ label poem_act_1_day_4:
     pause 1.5
     call screen poem_game_solo(*poem_words_a1_d4[20])
     pause 1.5
-    call screen dialog("Ух, в этот раз сразу на одном дыхании.", ok_action=Return())
-    call screen dialog("Чтоб так каждый раз было...", ok_action=Return())
-    call screen dialog("Итак, что же получилось?", ok_action=Return())
+    call screen dialog(_("Ух, в этот раз сразу на одном дыхании."), ok_action=Return())
+    call screen dialog(_("Чтоб так каждый раз было..."), ok_action=Return())
+    call screen dialog(_("Итак, что же получилось?"), ok_action=Return())
     pause 0.5
 
     call skip_block_off

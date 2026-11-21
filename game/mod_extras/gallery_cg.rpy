@@ -89,6 +89,40 @@ init -1 python in GalleryCG:
 
 
 init python:
+
+    def build_cg_a1_d10_night_n_2(st, at):
+        """
+        Обход бага Ren'Py 8.5 со SpriteManager (issue #6767)
+        """
+        # _duplicatable - этот SpriteManager нельзя клонировать
+        # (предотвращает сбой в цепочке отрисовки, из-за которого пиксели исчезали)
+        n_rects1.cluster.sm._duplicatable = False
+        n_rects2.cluster.sm._duplicatable = False
+        n_rects3.cluster.sm._duplicatable = False
+
+        return Fixed(
+            "n_cg1_bg",
+            "n_cg1_base",
+            "n_cg1b",
+            Transform(
+                n_rects1.cluster.sm,
+                xpos=n_rects1.x, ypos=n_rects1.y, yoffset=-25, xoffset=-15,
+                xsize=n_rects1.width, ysize=n_rects1.height
+            ),
+            Transform(
+                n_rects2.cluster.sm,
+                xpos=n_rects2.x, ypos=n_rects2.y, yoffset=-20, xoffset=-10,
+                xsize=n_rects2.width, ysize=n_rects2.height
+            ),
+            Transform(
+                n_rects3.cluster.sm,
+                xpos=n_rects3.x, ypos=n_rects3.y, yoffset=-20,
+                xsize=n_rects3.width, ysize=n_rects3.height
+            ),
+            xysize=(1280, 720)
+        ), None  # анимацией управляет SpriteManager через свой внутренний механизм
+
+
     cg_timeline_act_1 = _("Акт 1 \"Новая жизнь\". День")
 
     cg_a1_d1_y = GalleryCGImage(
@@ -207,7 +241,7 @@ init python:
         place = _("Литературный клуб"),
         description = _("Образ Нацуки рассказывает Максу о недостатке внимания в его кошмаре."),
         artist = _("Художник -- Satchely из Team Salvato"),
-        image_show = Composite((1280, 720), (0, 0), "n_cg1_bg", (0, 0), "n_cg1_base", (0, 0), "n_cg1b"),
+        image_show = DynamicDisplayable(build_cg_a1_d10_night_n_2),
         image_export = None
     )
 

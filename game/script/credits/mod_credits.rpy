@@ -97,177 +97,177 @@ label mod_credits:
     show credits_original_logo at credits_text_scroll(780)
     pause 0.1
     show credits_team_salvato at credits_text_scroll(1100)
-    show credits_label_text "Концепция, дизайн и сценарий\nоригинальной игры" as clt0 at cts_left
+    show credits_label_text _("Концепция, дизайн и сценарий\nоригинальной игры") as clt0 at cts_left
     pause 0.1
-    show credits_text "Dan Salvato из команды Team Salvato" as ct0 at cts_left
+    show credits_text _("Dan Salvato из команды Team Salvato") as ct0 at cts_left
 
     pause 8.0
 
     show credits_mod_logo at credits_text_scroll(540)
     pause 0.05
     show credits_orange_team at credits_text_scroll(210)
-    show credits_label_text "Концепция, дизайн и сценарий\nмодификации" as clt1 at cts_right
-    show credits_text "KitsuruDev" as ct1 at cts_right
+    show credits_label_text _("Концепция, дизайн и сценарий\nмодификации") as clt1 at cts_right
+    show credits_text _("KitsuruDev (NijiLight)") as ct1 at cts_right
 
     pause 8.0
 
-    show credits_label_text_big "Художники" as clt at cts_center
+    show credits_label_text_big _("Художники") as clt at cts_center
 
     pause 6.0
 
-    show credits_label_text "Художники спрайтов персонажей" as clt2 at cts_left_small
+    show credits_label_text _("Художники спрайтов персонажей") as clt2 at cts_left_small
     pause 0.1
-    show credits_text "Все художники спрайтов указаны в\nразделе \"Персонажи\" экстра-меню" as ct2 at cts_left_small
+    show credits_text _("Все художники спрайтов указаны в\nразделе \"Персонажи\" экстра-меню") as ct2 at cts_left_small
     pause 0.5
     show m_chibi_poem at cc_2
 
     pause 8.0
 
-    show credits_label_text "Художники спрайтов" as clt0 at cts_right_small
+    show credits_label_text _("Художники спрайтов") as clt0 at cts_right_small
     pause 0.25
-    show credits_text "Голова хоррорного чиби Сайори при прыжке:\n\"Doki Doki Takeover: Bad Ending\"\n(модификация игры \"Friday Night Funkin\")" as ct0 at cts_right_small
+    show credits_text _("Голова хоррорного чиби Сайори при прыжке:\n\"Doki Doki Takeover: Bad Ending\"\n(модификация игры \"Friday Night Funkin\")") as ct0 at cts_right_small
     pause 0.5
     show s_chibi_poem at cc_1
 
     pause 8.0
 
-    show credits_label_text "Художники спрайтов" as clt1 at cts_left_small
+    show credits_label_text _("Художники спрайтов") as clt1 at cts_left_small
     pause 0.1
-    show credits_text "Глючная чиби-смесь Моники, Юри и Нацуки:\nAverage#3201 (Discord, старый ник)" as ct1 at cts_left_small
+    show credits_text _("Глючная чиби-смесь Моники, Юри и Нацуки:\nAverage#3201 (Discord, старый ник)") as ct1 at cts_left_small
     pause 0.5
     show mix_chibi glitch at cc_2
 
     pause 8.0
 
-    show credits_label_text "Художники спрайтов" as clt2 at cts_right_small
+    show credits_label_text _("Художники спрайтов") as clt2 at cts_right_small
     pause 0.1
-    show credits_text "Пистолет в кошмаре 1 акта 12 дня (Flame-Hybrid 9):\nzonked (opengameart.org)" as ct2 at cts_right_small
+    show credits_text _("Пистолет в кошмаре 1 акта 12 дня (Flame-Hybrid 9):\nzonked (opengameart.org)") as ct2 at cts_right_small
     pause 0.5
     show mc_chibi_poem at cc_1
 
     pause 8.0
 
-    show credits_label_text "Художники СG-сцен" as clt0 at cts_left_small
+    show credits_label_text _("Художники СG-сцен") as clt0 at cts_left_small
     pause 0.1
-    show credits_text "Все художинки CG-сцен указаны в\nразделе \"Галерея (CG)\" экстра-меню" as ct0 at cts_left_small
+    show credits_text _("Все художинки CG-сцен указаны в\nразделе \"Галерея (CG)\" экстра-меню") as ct0 at cts_left_small
     pause 0.5
     show y_chibi_poem at cc_2
 
     pause 8.0
 
-    show credits_label_text "Художники фонов" as clt1 at cts_right_small
+    show credits_label_text _("Художники фонов") as clt1 at cts_right_small
     pause 0.1
-    show credits_text "Все художники фонов указаны в\nразделе \"Галерея (фоны)\" экстра-меню" as ct1 at cts_right_small
+    show credits_text _("Все художники фонов указаны в\nразделе \"Галерея (фоны)\" экстра-меню") as ct1 at cts_right_small
     pause 0.5
     show n_chibi_poem at cc_1
 
     pause 8.0
 
-    show credits_label_text_big "Музыка и звуки" as clt at cts_center
+    show credits_label_text_big _("Музыка и звуки") as clt at cts_center
 
     pause 6.0
 
-    show credits_label_text "Композиторы" as clt2 at cts_left_small
+    show credits_label_text _("Композиторы") as clt2 at cts_left_small
     pause 0.1
-    show credits_text "Все композиторы указаны в\nразделе \"Музыка\" экстра-меню" as ct2 at cts_left_small
+    show credits_text _("Все композиторы указаны в\nразделе \"Музыка\" экстра-меню") as ct2 at cts_left_small
     pause 0.5
     show kam_chibi_poem at cc_2
 
     pause 8.0
 
-    show credits_label_text "Звуки" as clt0 at cts_right_small
+    show credits_label_text _("Звуки") as clt0 at cts_right_small
     pause 0.1
-    show credits_text "Все звуки использованы из оригинальной игры\nи с сайтов zvukogram.com и zvukipro.com" as ct0 at cts_right_small
+    show credits_text _("Все звуки использованы из оригинальной игры\nи с сайтов zvukogram.com и zvukipro.com") as ct0 at cts_right_small
     pause 0.5
     show k_chibi_poem at cc_1
 
     pause 8.0
 
-    show credits_label_text "Звуки" as clt1 at cts_center
+    show credits_label_text _("Звуки") as clt1 at cts_center
     pause 0.1
-    show credits_text "Рингтон Макса \"Ringtone -- Red Light\": fadirra (dig.ccmixter.org)\nРингтон Юри \"Ringtone\": Dimas#4872 (Discord, старый ник) (DDMC Community Assets)" as ct1 at cts_center
+    show credits_text _("Рингтон Макса \"Ringtone -- Red Light\": fadirra (dig.ccmixter.org)\nРингтон Юри \"Ringtone\": Dimas#4872 (Discord, старый ник) (DDMC Community Assets)") as ct1 at cts_center
 
     pause 8.0
 
-    show credits_label_text_big "Механики и код" as clt at cts_center
+    show credits_label_text_big _("Механики и код") as clt at cts_center
 
     pause 6.0
 
-    show credits_label_text "Шаблон-основа модификации" as clt2 at cts_center
+    show credits_label_text _("Шаблон-основа модификации") as clt2 at cts_center
     pause 0.1
-    show credits_text "Разработчик кода: Azariel Del Carmen (GanstaKingofSA)\n(подробное описание есть в разделе \"О моде\" экстра-меню)" as ct2 at cts_center
+    show credits_text _("Разработчик кода: Azariel Del Carmen (GanstaKingofSA)\n(подробное описание есть в разделе \"О моде\" экстра-меню)") as ct2 at cts_center
 
     pause 6.0
 
-    show credits_label_text "Mood Posing Tool (MPT) -- система сочетаний спрайтов персонажей" as clt0 at cts_center
+    show credits_label_text _("Mood Posing Tool (MPT) -- система сочетаний спрайтов персонажей") as clt0 at cts_center
     pause 1.1
-    show credits_text "Автор: Chronos (Reddit)\nПомощь автору: AgentGold\nХудожник эмоций: Yagamirai10 (Reddit)\nРазработчик кода: Terra\nТестирование: MrGraves" as ct0 at cts_center
+    show credits_text _("Автор: Chronos (Reddit)\nПомощь автору: AgentGold\nХудожник эмоций: Yagamirai10 (Reddit)\nРазработчик кода: Terra\nТестирование: MrGraves") as ct0 at cts_center
 
     pause 8.0
 
-    show credits_label_text "Смартфон (код и интерфейс)" as clt1 at cts_center
+    show credits_label_text _("Смартфон (код и интерфейс)") as clt1 at cts_center
     pause 0.1
-    show credits_text "Elckarow#8399 (Discord, старый ник)\n" as ct1 at cts_center
+    show credits_text _("Elckarow#8399 (Discord, старый ник)\n") as ct1 at cts_center
 
     pause 6.0
 
-    show credits_label_text "Ползунки настроек и идея меняющегося меню" as clt2 at cts_center
+    show credits_label_text _("Ползунки настроек и идея меняющегося меню") as clt2 at cts_center
     pause 0.1
-    show credits_text "\"Doki Doki Takeover +\" (модификация \"Friday Night Funkin\")\n" as ct2 at cts_center
+    show credits_text _("\"Doki Doki Takeover +\" (модификация \"Friday Night Funkin\")\n") as ct2 at cts_center
 
     pause 6.0
 
-    show credits_label_text "Анимированные глитчи на объектах" as clt0 at cts_center
+    show credits_label_text _("Анимированные глитчи на объектах") as clt0 at cts_center
     pause 0.1
-    show credits_text "Gouvernathor (GitHub, репозиторий:\nhttps://github.com/Gouvernathor/renpy-ChromaGlitch.git)" as ct0 at cts_center
+    show credits_text _("Gouvernathor (GitHub, репозиторий:\nhttps://github.com/Gouvernathor/renpy-ChromaGlitch.git)") as ct0 at cts_center
 
     pause 6.0
 
-    show credits_label_text "Мини-игра Tetromania (Тетрис)" as clt9 at cts_center
+    show credits_label_text _("Мини-игра Tetromania (Тетрис)") as clt9 at cts_center
     pause 1.1
-    show credits_text "Разработчик основы кода: Mikan-DS (GitHub)\nСписок мини-игр для RenPy: Andredron (lemmasoft.renai.us)\nЗвук получения нового уровня: Circlerun (opengameart.org)\nЗвуки блоков и музыка проигрыша: Fupi (opengameart.org)" as ct9 at cts_center
+    show credits_text _("Разработчик основы кода: Mikan-DS (GitHub)\nСписок мини-игр для RenPy: Andredron (lemmasoft.renai.us)\nЗвук получения нового уровня: Circlerun (opengameart.org)\nЗвуки блоков и музыка проигрыша: Fupi (opengameart.org)") as ct9 at cts_center
 
     pause 6.0
 
-    show credits_label_text "Значки, курсоры и шрифты" as clt10 at cts_center
+    show credits_label_text _("Значки, курсоры и шрифты") as clt10 at cts_center
     pause 0.1
-    show credits_text "Значки и курсоры использованы с сайта flaticons.net\nШрифты использованы с сайта fonts-online.ru" as ct10 at cts_center
+    show credits_text _("Значки и курсоры использованы с сайта flaticons.net\nШрифты использованы с сайта fonts-online.ru") as ct10 at cts_center
 
     pause 6.0
 
     queue music mod_credits_2
 
-    show credits_label_text "Отдельная благодарность (хотя вряд-ли это кто-то из них увидит)" as clt1 at cts_center
+    show credits_label_text _("Отдельная благодарность (хотя вряд ли это кто-то из них увидит)") as clt1 at cts_center
     pause 0.5
-    show credits_text "Team Salvato и лично Дэну Сальвато за созданный Литературный клуб,\nкоторый изменил мою жизнь" as ct1 at cts_center
+    show credits_text _("Team Salvato и лично Дэну Сальвато за созданный Литературный клуб,\nкоторый изменил мою жизнь") as ct1 at cts_center
     pause 3.0
-    show credits_text "Сообществу DDLC в Reddit за большое количество материала для модов и\nподдержание игры до сих пор (но не за вялую публикацию моего поста о моде и\nнаплевательство на него, тьфу на вас)" as ct2 at cts_center
+    show credits_text _("Сообществу DDLC в Reddit за большое количество материала для модов и\nподдержание игры до сих пор (но не за вялую публикацию моего поста о моде и\nнаплевательство на него, тьфу на вас)") as ct2 at cts_center
     pause 3.0
-    show credits_text "Космическому коту (Youtube) за видео по RenPy, которые помогли мне освоиться\nна первых парах разработки" as ct3 at cts_center
+    show credits_text _("Космическому коту (Youtube) за видео по RenPy, которые помогли мне освоиться\nна первых парах разработки") as ct3 at cts_center
     pause 2.0
-    show credits_text "Akane its mein Alter Ego за тестирование модификации и настоящую дружбу" as ct4 at cts_center
+    show credits_text _("Akane its mein Alter Ego за тестирование модификации и поддержку") as ct4 at cts_center
     pause 1.75
-    show credits_text "Fugita за тестирование модификации и поддержку" as ct5 at cts_center
+    show credits_text _("Fugita за тестирование модификации и поддержку") as ct5 at cts_center
     pause 1.75
-    show credits_text "Моему брату за помощь в формировании общей структуры сюжета\nмодификации по главам" as ct6 at cts_center
+    show credits_text _("Моему брату за помощь в формировании общей структуры сюжета\nмодификации по главам") as ct6 at cts_center
     pause 2.0
-    show credits_text "Моей семье за всю поддержку (без них я бы не был тем, кем являюсь сейчас)" as ct7 at cts_center
+    show credits_text _("Моей семье за всю поддержку (без них я бы не был тем, кем являюсь сейчас)") as ct7 at cts_center
     pause 2.0
-    show credits_text "Моим одногруппникам (и -цам) в вузе за хорошее отношение ко мне, да и в целом\nтоже за \"ненаплевательство\" в мою сторону" as ct8 at cts_center
+    show credits_text _("Моим одногруппникам (и -цам) в вузе за хорошее отношение ко мне, да и в целом\nтоже за \"ненаплевательство\" в мою сторону") as ct8 at cts_center
     pause 2.5
-    show credits_text "А отдельным из них благодарность за общение и времяпрепровождение,\nблагодаря которым становится веселее и легче" as ct9 at cts_center
+    show credits_text _("А отдельным из них благодарность за общение и времяпрепровождение,\nблагодаря которым становится веселее и легче") as ct9 at cts_center
     pause 3.0
-    show credits_text "Моим учителям и препродавателям (и в школе, и в вузе), которые\nвпихнули в меня кучу знаний (без них бы я тоже не был тем,\nкем являюсь сейчас)" as ct10 at cts_center
+    show credits_text _("Моим учителям и препродавателям (и в школе, и в вузе), которые\nвпихнули в меня кучу знаний (без них бы я тоже не был тем,\nкем являюсь сейчас)") as ct10 at cts_center
     pause 3.0
-    show credits_text "Всем остальным, кому было интересно наблюдать за разработкой и\nкто ждал релиз (считаные единицы, ха-ха)" as ct11 at cts_center
+    show credits_text _("Всем остальным, кому было интересно наблюдать за разработкой и\nкто ждал релиз (считаные единицы, ха-ха)") as ct11 at cts_center
     pause 4.0
-    show credits_text "А ещё себе родимому, потому что смог довести модификацию до релиза\nв нормальном и рабочем виде, несмотря на практически нулевую поддержку и\nпонимание хоть кого-то, сколько я здесь наворотил (поразительно, на самом деле...\nХотя нет, эмоций у меня это не вызывает)" as ct12 at cts_center
+    show credits_text _("А ещё себе родимому, потому что смог довести модификацию до релиза\nв нормальном и рабочем виде, несмотря на практически нулевую поддержку и\nпонимание хоть кого-то, сколько я здесь наворотил (поразительно, на самом деле...\nХотя нет, эмоций у меня это не вызывает)") as ct12 at cts_center
     pause 4.0
-    show credits_text "И, конечно же, тебе, [persistent.playername], за прохождение этого мода!\n(Даже если я тебя никогда не увижу)\n(И даже если я тебя ненавижу)" as ct13 at cts_center
+    show credits_text _("И, конечно же, тебе, [persistent.playername], за прохождение этого мода!\n(Даже если я тебя никогда не увижу)\n(И даже если я тебя ненавижу)") as ct13 at cts_center
 
     pause 22.0
 
-    show credits_text "Однако это ещё не конец..." as cft1:
+    show credits_text _("Однако это ещё не конец...") as cft1:
         align (0.5, 0.5) alpha 0
         ease 2.0 alpha 1
         4.5
@@ -275,7 +275,7 @@ label mod_credits:
 
     pause 8.0
 
-    show credits_text "...потому что это только начало." as cft2:
+    show credits_text _("...потому что это только начало.") as cft2:
         align (0.5, 0.5) alpha 0
         ease 2.0 alpha 1
         4.5
@@ -291,7 +291,7 @@ label mod_credits:
 
     pause 2.0
 
-    show credits_text_final "Нажмите любую клавишу продвижения сюжета для выхода в главное меню...":
+    show credits_text_final _("Нажмите любую клавишу продвижения сюжета для выхода в главное меню..."):
         align (0.5, 1.0) alpha 0
         ease 8.0 alpha 0.85
 

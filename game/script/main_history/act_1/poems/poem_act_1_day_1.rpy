@@ -43,16 +43,16 @@ label poem_act_1_day_1:
 
     play music t4 fadein 3.0
 
-    call screen dialog("Итак, слова...", ok_action=Return())
+    call screen dialog(_("Итак, слова..."), ok_action=Return())
     pause 3.0
-    call screen dialog("Что, если...", ok_action=Return())
+    call screen dialog(_("Что, если..."), ok_action=Return())
     call screen poem_game_solo(*poem_words_a1_d1[1])
     pause 1.5
-    call screen dialog("Ну и начало. Надо думать дальше...", ok_action=Return())
+    call screen dialog(_("Ну и начало. Надо думать дальше..."), ok_action=Return())
     pause 0.5
     call screen poem_game_solo(*poem_words_a1_d1[2])
     pause 1.5
-    call screen dialog("Круто, что-то получается.", ok_action=Return())
+    call screen dialog(_("Круто, что-то получается."), ok_action=Return())
     pause 0.5
     call screen poem_game_solo(*poem_words_a1_d1[3])
     pause 1.5
@@ -62,7 +62,7 @@ label poem_act_1_day_1:
     pause 1.5
     call screen poem_game_solo(*poem_words_a1_d1[6])
     pause 1.5
-    call screen dialog("Самокритично.", ok_action=Return())
+    call screen dialog(_("Самокритично."), ok_action=Return())
     pause 0.5
     call screen poem_game_solo(*poem_words_a1_d1[7])
     pause 1.5
@@ -80,9 +80,9 @@ label poem_act_1_day_1:
     pause 1.5
     call screen poem_game_solo(*poem_words_a1_d1[14])
     pause 1.5
-    call screen dialog("Какая-то фигня выходит...", ok_action=Return())
-    call screen dialog("..........", ok_action=Return())
-    call screen dialog("Ну и плевать, первый раз же.", ok_action=Return())
+    call screen dialog(_("Какая-то фигня выходит..."), ok_action=Return())
+    call screen dialog(_(".........."), ok_action=Return())
+    call screen dialog(_("Ну и плевать, первый раз же."), ok_action=Return())
     call screen poem_game_solo(*poem_words_a1_d1[15])
     pause 1.5
     call screen poem_game_solo(*poem_words_a1_d1[16])
@@ -91,20 +91,20 @@ label poem_act_1_day_1:
     pause 1.5
     call screen poem_game_solo(*poem_words_a1_d1[18])
     pause 1.5
-    call screen dialog("Или всё-таки...", ok_action=Return())
-    call screen dialog("..........", ok_action=Return())
-    call screen dialog("Ай, ладно.", ok_action=Return())
+    call screen dialog(_("Или всё-таки..."), ok_action=Return())
+    call screen dialog(_(".........."), ok_action=Return())
+    call screen dialog(_("Ай, ладно."), ok_action=Return())
     call screen poem_game_solo(*poem_words_a1_d1[19])
     pause 1.5
-    call screen dialog("А конец?", ok_action=Return())
-    call screen dialog("Концовка никакущая.", ok_action=Return())
-    call screen dialog("Нет подходящего слова.", ok_action=Return())
-    call screen dialog("За исключением одного, но тогда точно бред выходит.", ok_action=Return())
-    call screen dialog("Эх, блин, выбора нет.", ok_action=Return())
+    call screen dialog(_("А конец?"), ok_action=Return())
+    call screen dialog(_("Концовка никакущая."), ok_action=Return())
+    call screen dialog(_("Нет подходящего слова."), ok_action=Return())
+    call screen dialog(_("За исключением одного, но тогда точно бред выходит."), ok_action=Return())
+    call screen dialog(_("Эх, блин, выбора нет."), ok_action=Return())
     call screen poem_game_solo(*poem_words_a1_d1[20])
     pause 1.5
-    call screen dialog("Что ж, всё.", ok_action=Return())
-    call screen dialog("А ну-ка глянем, что получилось...", ok_action=Return())
+    call screen dialog(_("Что ж, всё."), ok_action=Return())
+    call screen dialog(_("А ну-ка глянем, что получилось..."), ok_action=Return())
     pause 0.5
 
     call skip_block_off

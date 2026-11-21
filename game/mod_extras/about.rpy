@@ -18,7 +18,7 @@ screen about():
             vbox:
                 label _("Фанатская модификация «[config.name!t]»")
                 null height 5
-                label _("Разработчик «Multi Orange Team»")
+                label _("Разработчик «Orange Nova»")
                 null height 25
                 hbox:
                     null width 54

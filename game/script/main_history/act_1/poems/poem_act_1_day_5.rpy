@@ -47,7 +47,7 @@ label poem_act_1_day_5:
 
     play music "bgm/s_kill_early.ogg" fadein 3.0
 
-    call screen dialog("Слова сами лезут в голову...", ok_action=Return())
+    call screen dialog(_("Слова сами лезут в голову..."), ok_action=Return())
     pause 0.5
     call screen poem_game_solo(*poem_words_a1_d5[1])
     pause 1.5
@@ -90,7 +90,7 @@ label poem_act_1_day_5:
     pause 1.5
     call screen poem_game_solo(*poem_words_a1_d5[20])
     pause 1.5
-    call screen dialog("...", ok_action=Return())
+    call screen dialog(_("..."), ok_action=Return())
     pause 0.5
 
     call skip_block_off

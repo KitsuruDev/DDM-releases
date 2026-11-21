@@ -44,13 +44,13 @@ label poem_act_1_day_3:
 
     play music t4 fadein 3.0
 
-    call screen dialog("Но мне нужен стержень, вокруг которого будет составляться стих.", ok_action=Return())
-    call screen dialog("Что же это может быть?", ok_action=Return())
-    call screen dialog("Книги, истории...", ok_action=Return())
-    call screen dialog("Написать что-то в мире европейского средневековья?", ok_action=Return())
-    call screen dialog("Не люблю я эту тему...", ok_action=Return())
-    call screen dialog("...", ok_action=Return())
-    call screen dialog("Хотя...", ok_action=Return())
+    call screen dialog(_("Но мне нужен стержень, вокруг которого будет составляться стих."), ok_action=Return())
+    call screen dialog(_("Что же это может быть?"), ok_action=Return())
+    call screen dialog(_("Книги, истории..."), ok_action=Return())
+    call screen dialog(_("Написать что-то в мире европейского средневековья?"), ok_action=Return())
+    call screen dialog(_("Не люблю я эту тему..."), ok_action=Return())
+    call screen dialog(_("..."), ok_action=Return())
+    call screen dialog(_("Хотя..."), ok_action=Return())
     pause 0.5
     call screen poem_game_solo(*poem_words_a1_d3[1])
     pause 1.5
@@ -60,9 +60,9 @@ label poem_act_1_day_3:
     pause 1.5
     call screen poem_game_solo(*poem_words_a1_d3[4])
     pause 1.5
-    call screen dialog("Да!", ok_action=Return())
-    call screen dialog("Я напишу стих про драгоценные камни.", ok_action=Return())
-    call screen dialog("А назову его -- «Рудник».", ok_action=Return())
+    call screen dialog(_("Да!"), ok_action=Return())
+    call screen dialog(_("Я напишу стих про драгоценные камни."), ok_action=Return())
+    call screen dialog(_("А назову его -- «Рудник»."), ok_action=Return())
     pause 0.5
     call screen poem_game_solo(*poem_words_a1_d3[5])
     pause 1.5
@@ -96,9 +96,9 @@ label poem_act_1_day_3:
     pause 1.5
     call screen poem_game_solo(*poem_words_a1_d3[20])
     pause 1.5
-    call screen dialog("Вот так-то!", ok_action=Return())
-    call screen dialog("Я даже собой доволен в некоторой степени.", ok_action=Return())
-    call screen dialog("Посмотрим на нашу первую объёмную работу.", ok_action=Return())
+    call screen dialog(_("Вот так-то!"), ok_action=Return())
+    call screen dialog(_("Я даже собой доволен в некоторой степени."), ok_action=Return())
+    call screen dialog(_("Посмотрим на нашу первую объёмную работу."), ok_action=Return())
     pause 0.5
 
     call skip_block_off

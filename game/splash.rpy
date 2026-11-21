@@ -582,6 +582,7 @@ label monika_first_run:
             first_name = True
         )
 
+        $ raw_input = playername_raw
         $ playername_raw = PlayernameFilters.checking_first_run(playername_raw)
 
         if playername_raw == 0:
@@ -601,6 +602,7 @@ label monika_first_run:
                 m "...имя короткое."
                 show monika cm
 
+            $ playername_raw = raw_input
             jump monika_first_run_create_name
 
         elif playername_raw == 1:
@@ -626,6 +628,7 @@ label monika_first_run:
                 m "Твоя попытка не прокатит, переделай имя."
                 show monika cm
 
+            $ playername_raw = raw_input
             jump monika_first_run_create_name
 
         elif playername_raw == 2:
@@ -655,6 +658,7 @@ label monika_first_run:
                     m "..."
                 $ count_swearing += 1
 
+                $ playername_raw = raw_input
                 jump monika_first_run_create_name
 
             else:
@@ -684,6 +688,7 @@ label monika_first_run:
                 m "Сайонара, ничтожество."
                 m "Не забудь оскорбиться и сказать всем, какая я тварь, наехала на твоё самолюбие, вместо того, чтобы найти в себе силы хоть как-то стать лучше, хотя бы для своей семьи, которая не смогла тебя нормально воспитать."
 
+                $ playername_raw = raw_input # на всякий случай, хотя бессмысленно
                 jump clown_ending
 
         elif playername_raw in (3, 4):
@@ -716,6 +721,7 @@ label monika_first_run:
 
             show monika cm
 
+            $ playername_raw = raw_input
             jump monika_first_run_create_name
 
         elif playername_raw == 5:
